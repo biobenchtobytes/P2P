@@ -1,0 +1,4 @@
+- source: project
+  gh-pages:
+    - id: site
+      url: 'https://biobenchtobytes.github.io/P2P'

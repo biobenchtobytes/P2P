@@ -7,31 +7,25 @@ Welcome to the **Plot2Publish** workshop! Here you will find the reference mater
 
 ---
 
-### DAY 1
-
-**Session 1: Code context**
+### SESSION 1: Code Context
 
 - Versioning
 - Dependencies
 - Environment management (Conda / renv)
 
-**Session 2: Version Control**
+### SESSION 2: Version Control
 
 - Repositories & commits
-- Local vs remote (Git & GitHub)
-- README, `.gitignore`, and your GitHub homepage
+- Local version control with Git
+- Remote version control with GitHub
 
----
-
-### DAY 2
-
-**Session 3: Collaboration**
+### SESSION 3: Collaboration
 
 - Code smells & code review
 - Issues, branches & pull requests
 
-**Session 4: Prepare to Publish!**
+### SESSION 4: Prepare to Publish!
 
 - Licensing
-- Releases & DOIs (Zenodo)
+- Releases & DOIs via Zenodo
 - Data repositories & final checklist

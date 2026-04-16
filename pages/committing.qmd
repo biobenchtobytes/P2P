@@ -1,0 +1,98 @@
+---
+title: "Committing"
+---
+
+## Making commits
+
+Each time you want Git to take a snapshot of your project, you create a **commit**. A good commit has:
+
+1. A logical, focused set of changes — not everything all at once
+2. A short, meaningful message — *what* changed, and *why*?
+
+| ❌ | ✅ |
+|---|---|
+| *"Fix"* | *"Fix legend label overlap in volcano plot"* |
+| *"change colours"* | *"Change bar graph palette to improve contrast"* |
+| *"updates"* | *"Add QC filtering step before normalisation"* |
+
+::: {.callout-important}
+Commit messages are notes to your future self — who will not remember what *"fixed it"* means!
+:::
+
+::: {.callout-tip}
+Commit early, commit often. Small, focused commits are far easier to understand — and undo — than one giant commit at the end.
+:::
+
+## Bash workflow
+
+```bash
+# Navigate to your project and initialise Git
+cd my_project
+git init
+
+# Check what Git can see
+git status
+
+# Stage a specific file and commit
+git add filename
+git commit -m "Your commit message here"
+
+# View the commit history
+git log --oneline
+```
+
+::: {.callout-important}
+`git add .` stages *everything* in the folder. Use it only after setting up your `.gitignore` — otherwise you may commit files you didn't mean to.
+:::
+
+## GUI workflow
+
+::: {.panel-tabset}
+
+### Python (VSCode)
+
+1. Open your project folder in VSCode
+2. Click the **Source Control** icon in the left sidebar (`Ctrl+Shift+G`)
+3. Click **Initialise Repository**
+4. Files appear with **U** (untracked) badges
+5. Hover a file and click **+** to stage it — badge changes to **A**
+6. Type a commit message in the box at the top
+7. Click **Commit** (✓)
+
+### R (RStudio)
+
+1. Go to **File → New Project → Existing Directory**
+2. Navigate to your project folder and click **Create Project**
+3. Go to **Tools → Project Options → Git/SVN**
+4. Change version control system to **Git** and click OK
+5. Restart RStudio — the **Git tab** appears top-right
+6. Files appear with **?** (untracked) badges
+7. Tick the checkbox next to files to stage them — badge changes to **A**
+8. Click **Commit**, write a message, click **Commit**
+
+:::
+
+## In practice
+
+::: {.callout-caution}
+### Exercises
+
+2.1 Initialise a `git` repository within the `spacewalk_analysis` folder
+
+2.2 Create a `.gitignore` — which files should you exclude?
+
+2.3 Make your first commit with the original folder components
+
+2.4 Write a `README.md` that describes the project, then commit your changes
+:::
+
+## Quick reference
+
+| Action | Command |
+|---|---|
+| Initialise a repo | `git init` |
+| Check status | `git status` |
+| Stage a file | `git add filename` |
+| Stage everything | `git add .` |
+| Commit | `git commit -m "your message"` |
+| View history | `git log --oneline` |

@@ -1,0 +1,102 @@
+---
+title: "Branches & Pull Requests"
+---
+
+## Why branches?
+
+So far, all work has gone directly onto `main` — the live version of the code. That works fine alone. With collaborators, it creates problems:
+
+- ❌ Two people editing the same file at the same time creates conflicts
+- ❌ Half-finished changes can break the code for everyone
+- ❌ No way to review work before it goes live
+
+::: {.callout-note}
+A **branch** is a safe copy of the code where you can make changes without affecting `main` — until you are ready.
+:::
+
+![](images/branching.png){fig-align="center" height="220"}
+
+::: {.callout-important}
+`main` stays clean and stable at all times by keeping work on branches.
+:::
+
+## Pull requests
+
+When your branch is ready, you open a **pull request** (PR) — a request to merge your changes into `main`.
+
+A PR lets your teammates:
+
+- See exactly what changed, line by line
+- Leave comments on specific lines
+- Approve the changes — or ask for revisions
+- Merge once everyone is happy
+
+::: {.callout-tip}
+One issue → one branch → one PR. Small, focused changes are much easier to review than one enormous commit.
+:::
+
+## Creating a branch & opening a PR
+
+::: {.panel-tabset}
+
+### Python (VSCode)
+
+1. Click the branch name in the bottom-left status bar
+2. Select **Create new branch** — name it `fix/issue-number-short-description`
+3. Make your changes and commit as normal
+4. Click **Publish Branch** in the Source Control tab
+5. VSCode will prompt you to **Create Pull Request** — click it
+6. Add a title, link to the issue (type `#` to search), and click **Create**
+
+### R (RStudio)
+
+1. In the **Git tab**, click the branch icon 🔀
+2. Click **New Branch** — name it `fix/issue-number-short-description`
+3. Make your changes and commit as normal
+4. Click **Push** (↑) to push your branch to GitHub
+5. GitHub will show a banner: **"Compare & pull request"** — click it
+6. Add a title, link to the issue (type `#` to search), and click **Create pull request**
+
+:::
+
+## Reviewing & merging a PR
+
+1. Open the repository on GitHub
+2. Click the **Pull requests** tab
+3. Open the PR you have been assigned to review
+4. Click **Files changed** to see the diff
+5. Click `+` next to any line to leave a comment
+6. When done, click **Review changes** and choose:
+   - ✅ **Approve** — looks good, ready to merge
+   - 💬 **Comment** — feedback but no verdict yet
+   - ❌ **Request changes** — needs fixes before merging
+7. Once approved → click **Merge pull request**
+
+## In practice
+
+::: {.callout-caution}
+### Exercises
+
+3.5 Assign yourself to an open issue
+
+3.6 Create a branch, make your changes, commit then push
+
+3.7 Open a pull request — link it to the issue and assign a teammate as reviewer
+
+3.8 Review a teammate's PR — leave at least one comment, then approve
+
+3.9 Merge the approved PR and watch the live update!
+:::
+
+## Quick reference
+
+| Action | Where |
+|---|---|
+| Add a collaborator | Settings → Collaborators → Add people |
+| Create an issue | Issues tab → New issue → add label + assignee |
+| Create a branch (VSCode) | Click branch name in status bar → New branch |
+| Create a branch (RStudio) | Git tab → branch icon 🔀 → New Branch |
+| Open a pull request | Push branch → GitHub banner → Compare & pull request |
+| Link PR to an issue | Type `#issue-number` in the PR description |
+| Review a PR | Pull requests tab → Files changed → Review changes |
+| Merge a PR | Approve → Merge pull request → Confirm |

@@ -1,0 +1,64 @@
+---
+title: "Licensing"
+---
+
+## The final hurdles
+
+![](images/hurdles.png){fig-align="center" width="100%"}
+
+The hard work is done — reproducible environment, version-controlled code, collaborative workflow. Before sharing publicly, a few things are typically still missing:
+
+- ❌ **No licence** — legally, no one can reuse your code
+- ❌ **No release** — no stable, citable snapshot
+- ❌ **No DOI** — no way to cite it in a paper
+- ❌ **No data repository** — raw data has nowhere permanent to live
+
+## Why licensing matters
+
+::: {.callout-important}
+Code without a licence is **not** open source — it is legally unusable. Without a licence, nobody has permission to reuse, modify, or distribute your work, even if it is publicly visible on GitHub.
+:::
+
+A licence is just a text file — `LICENSE` — in the root of your repository. It tells anyone who finds your code exactly what they are and are not allowed to do with it.
+
+The right choice depends on what you want to allow:
+
+- Can people use it in commercial software?
+- Do derivative works need to share the same licence?
+- Do they need to credit you?
+
+## Common licences for code
+
+| Licence | Use freely | Modify & distribute | Must stay open | Commercial use |
+|---|:---:|:---:|:---:|:---:|
+| **MIT** | ✅ | ✅ | ❌ | ✅ |
+| **Apache 2.0** | ✅ | ✅ | ❌ | ✅ |
+| **GPL v3** | ✅ | ✅ | ✅ | ✅ |
+
+::: {.callout-note}
+**MIT** is the most common choice for research code — permissive, simple, and well understood. **GPL** is appropriate if you want derivative work to remain open.
+:::
+
+## Licences for data & documents
+
+Licensing applies to your **data and documentation** too — and the conventions are different from code.
+
+- **CC BY 4.0** — free to use and share with attribution. Most common for research data.
+- **CC0** — no rights reserved. Maximum reuse, no attribution required. Used by many data repositories.
+- **CC BY-NC** — non-commercial use only. Restrictive — consider carefully whether this is actually what you want.
+
+::: {.callout-tip}
+A common pairing: **MIT** for your code + **CC BY 4.0** for your data.
+:::
+
+## In practice
+
+::: {.callout-caution}
+### Exercises
+
+4.1 Browse [choosealicense.com](https://choosealicense.com)
+
+4.2 Decide on a licence for your `spacewalk_analysis` repository
+
+4.3 Add a `LICENSE` file with the relevant text and commit
+:::

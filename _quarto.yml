@@ -1,32 +1,49 @@
 project:
-  type: website
-  output-dir: _site
+  type: book
 
-website:
+book:
   title: "Plot2Publish"
-  navbar:
-    left:
-      - href: index.qmd
-        text: COURSE OVERVIEW
+  author: ""
+  date: ""
+  site-url: https://biobenchtobytes.github.io/P2P
+  chapters:
+    - index.qmd
+    - part: "SESSION 1: Code Context"
+      chapters:
+        - pages/versioning.qmd
+        - pages/dependencies.qmd
+        - pages/environments.qmd
+    - part: "SESSION 2: Version Control"
+      chapters:
+        - pages/repositories.qmd
+        - pages/committing.qmd
+        - pages/github.qmd
+    - part: "SESSION 3: Collaboration"
+      chapters:
+        - pages/code-review.qmd
+        - pages/branches-prs.qmd
+    - part: "SESSION 4: Prepare to Publish!"
+      chapters:
+        - pages/licensing.qmd
+        - pages/releases-dois.qmd
+        - pages/data-repositories.qmd
+    - pages/resources.qmd
   sidebar:
-    style: "docked"
-    contents:
-      - href: index.qmd
-        text: COURSE OVERVIEW
-      - section: "DAY 1"
-        contents:
-          - href: S1_environments.qmd
-            text: "Code context"
-          - href: S2_version-control.qmd
-            text: "Version control"
-      - section: "DAY 2"
-        contents:
-          - href: S3_collaboration.qmd
-            text: "Collaboration"
-          - href: S4_publishing.qmd
-            text: "Prepare to publish!"
+    search: true
+    logo: pages/images/logo_transparent.png
+    style: docked
+    background: dark
+  navbar:
+    background: dark
 
 format:
   html:
-    theme: cosmo
-    toc: true
+    theme: flatly
+    css: theme.css
+
+page-footer: |
+  Material developed by Bench2Bytes © 2025
+
+bread-crumbs: true
+execute:
+  freeze: auto

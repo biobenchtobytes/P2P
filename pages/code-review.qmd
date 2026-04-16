@@ -1,0 +1,81 @@
+---
+title: "Code Review"
+---
+
+## Code smells
+
+Research code is written to answer a question — not to be a software product. That's fine, but it often leaves behind patterns that make code hard to understand, re-run, or build upon.
+
+Common code smells include:
+
+- **Lack of comments** — it's not clear what the code is doing or why
+- **Inconsistent style** — mixed naming conventions, indentation, or formatting
+- **Hardcoded values** — numbers or strings that should be variables or parameters
+- **Duplicate code** — the same logic repeated in multiple places instead of a function
+- **Large functions** — functions that do too much and are hard to understand
+
+::: {.callout-tip}
+The process of identifying and fixing these issues is called **refactoring** — an important step before sharing your code more broadly.
+:::
+
+## Reviewing code
+
+When reviewing code — for yourself or a collaborator — look for:
+
+🐛 **Correctness** — does it actually do what it claims? Are there silent errors?
+
+🏷️ **Clarity** — could you understand this in six months without the author? Are comments being used in place of proper flow logic?
+
+📊 **Visualisation** — are axes labelled? Is the palette accessible? Is the default view representative?
+
+🔁 **Reproducibility** — are there hardcoded paths, arbitrary defaults, or missing dependencies?
+
+✂️ **Scope** — is there dead code, repeated logic, or TODO stubs that were never addressed?
+
+::: {.callout-tip}
+You are reviewing the *code*, not the *person* (even when that person is past you!) — specific, constructive comments are always best.
+:::
+
+## Issues
+
+**Issues** are GitHub's built-in way to track bugs, questions, and feature requests.
+
+Every issue has:
+
+- A **title** — short and specific
+- A **description** — what is wrong, where, and what the expected behaviour is
+- An optional **label** — e.g. `bug`, `enhancement`, `good first issue`
+- An optional **assignee** — who is responsible for fixing it
+
+::: {.callout-note}
+Issues are not just bug reports — comments, decisions, and links to the fix all live in one place. As with commit messages, be specific!
+:::
+
+## Adding collaborators
+
+A repository on GitHub is private by default. To work with others:
+
+1. Open your repository on GitHub
+2. Go to **Settings → Collaborators**
+3. Click **Add people**
+4. Search by GitHub username or email
+5. Set their role — **Write** is appropriate for most collaborators
+6. They receive an email invitation to accept
+
+::: {.callout-important}
+Anyone with write access can push directly to `main` — which is why branches and pull requests matter.
+:::
+
+## In practice
+
+::: {.callout-caution}
+### Exercises
+
+3.1 Accept your GitHub collaboration invitation
+
+3.2 Using the issue list provided, create at least one GitHub issue
+
+3.3 Clone the repository and open it — what other smells can you find?
+
+3.4 Record at least one more code smell as an issue
+:::

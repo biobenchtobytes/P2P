@@ -1,0 +1,110 @@
+/* Define your color palette as CSS variables */
+:root {
+    --primary: #4088d4;
+    --secondary: #f06449;
+    --accent: #f06449;
+    --info: #8f6593;
+    --navbar-bg: #001641;
+    /* dark background for navbar */
+    --navbar-link: #fff;
+}
+
+/* Apply primary color to headings and links */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--primary);
+}
+
+a {
+    color: var(--info);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* Style the navbar */
+.navbar,
+.quarto-navbar {
+    background-color: var(--navbar-bg) !important;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.quarto-navbar .navbar-brand,
+.quarto-navbar .nav-link,
+.margin-sidebar {
+    color: var(--navbar-link) !important;
+}
+
+.navbar .nav-link.active,
+.quarto-navbar .nav-link.active,
+.margin-sidebar {
+    color: var(--accent) !important;
+}
+
+/* Optional: accent for buttons or highlights */
+.btn-primary,
+.btn {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-primary:hover,
+.btn:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Sidebar background for Quarto book */
+.sidebar,
+.quarto-sidebar {
+    background-color: var(--navbar-bg) !important;
+}
+
+/* Sidebar link colors */
+.sidebar .sidebar-item,
+.quarto-sidebar .sidebar-item {
+    color: var(--navbar-link) !important;
+}
+
+.sidebar .sidebar-item.active,
+.quarto-sidebar .sidebar-item.active {}
+
+/* Sidebar link colors */
+.margin-sidebar {
+    background-color: #fff !important;
+    color: var(--accent) !important;
+}
+
+
+/* Make TOC links black by default */
+.sidebar nav[role=doc-toc] ul>li>a,
+.sidebar nav[role=doc-toc] ul>li>ul>li>a {
+    color: #222 !important;
+}
+
+/* Use your accent color on hover */
+.sidebar nav[role=doc-toc] ul>li>a:hover,
+.sidebar nav[role=doc-toc] ul>li>ul>li>a:hover {
+    color: var(--accent) !important;
+}
+
+/* Override active TOC link color and border in both sidebars */
+.sidebar nav[role=doc-toc] ul>li>a.active,
+.sidebar nav[role=doc-toc] ul>li>ul>li>a.active,
+.quarto-sidebar-secondary nav[role=doc-toc] ul>li>a.active,
+.quarto-sidebar-secondary nav[role=doc-toc] ul>li>ul>li>a.active {
+    color: var(--accent) !important;
+    border-left: 2px solid var(--accent) !important;
+    font-weight: bold;
+}
+
+.nav-page a:hover,
+.nav-page a:focus {
+    color: #d94c32 !important;
+}
