@@ -1,0 +1,37 @@
+---
+title: "Plot2Publish"
+subtitle: "Reproducible research code for scientists"
+---
+
+Welcome to the **Plot2Publish** workshop! Here you will find the reference material covered during the theoretical sessions. Use these pages alongside the practical exercise notebooks provided during the workshop.
+
+---
+
+### DAY 1
+
+**Session 1: Code context**
+
+- Versioning
+- Dependencies
+- Environment management (Conda / renv)
+
+**Session 2: Version Control**
+
+- Repositories & commits
+- Local vs remote (Git & GitHub)
+- README, `.gitignore`, and your GitHub homepage
+
+---
+
+### DAY 2
+
+**Session 3: Collaboration**
+
+- Code smells & code review
+- Issues, branches & pull requests
+
+**Session 4: Prepare to Publish!**
+
+- Licensing
+- Releases & DOIs (Zenodo)
+- Data repositories & final checklist

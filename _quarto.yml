@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Plot2Publish"
+  navbar:
+    left:
+      - href: index.qmd
+        text: COURSE OVERVIEW
+  sidebar:
+    style: "docked"
+    contents:
+      - href: index.qmd
+        text: COURSE OVERVIEW
+      - section: "DAY 1"
+        contents:
+          - href: S1_environments.qmd
+            text: "Code context"
+          - href: S2_version-control.qmd
+            text: "Version control"
+      - section: "DAY 2"
+        contents:
+          - href: S3_collaboration.qmd
+            text: "Collaboration"
+          - href: S4_publishing.qmd
+            text: "Prepare to publish!"
+
+format:
+  html:
+    theme: cosmo
+    toc: true

@@ -1,0 +1,245 @@
+---
+title: "Session 4: Prepare to Publish!"
+---
+
+## Overview
+
+The hard work is done — you have a reproducible environment, version-controlled code, and a collaborative workflow. Now let's make it citable.
+
+---
+
+## The final hurdles
+
+Before sharing code publicly alongside a manuscript, four things are typically missing:
+
+- ❌ **No licence** — legally, no one can reuse your code
+- ❌ **No release** — no stable, citable snapshot
+- ❌ **No DOI** — no way to cite it in a paper
+- ❌ **No data repository** — raw data has nowhere to live
+
+---
+
+## Licensing
+
+::: {.callout-important}
+Code without a licence is **not** open source — it is legally unusable. Without a licence, nobody has permission to reuse, modify, or distribute your work, even if it is publicly visible on GitHub.
+:::
+
+A licence is just a text file — `LICENSE` — in the root of your repository. It tells anyone who finds your code exactly what they are and are not allowed to do with it.
+
+### Common licences for code
+
+| Licence | Use freely | Modify & distribute | Must stay open | Commercial use |
+|---|:---:|:---:|:---:|:---:|
+| **MIT** | ✅ | ✅ | ❌ | ✅ |
+| **Apache 2.0** | ✅ | ✅ | ❌ | ✅ |
+| **GPL v3** | ✅ | ✅ | ✅ | ✅ |
+
+::: {.callout-note}
+**MIT** is the most common choice for research code — permissive, simple, and well understood. **GPL** is appropriate if you want derivative work to remain open.
+:::
+
+### Licences for data & documents
+
+- **CC BY 4.0** — free to use and share with attribution. Most common for research data.
+- **CC0** — no rights reserved. Maximum reuse, no attribution required. Used by many data repositories.
+- **CC BY-NC** — non-commercial use only. Restrictive — consider carefully whether this is what you want.
+
+::: {.callout-tip}
+A common pairing: **MIT** for your code + **CC BY 4.0** for your data.
+:::
+
+::: {.callout-caution}
+### Exercises
+
+4.1 Browse [choosealicense.com](https://choosealicense.com)
+
+4.2 Decide on a licence for your `spacewalk_analysis` repository
+
+4.3 Add a `LICENSE` file with the relevant text and commit
+:::
+
+---
+
+## Releases
+
+A GitHub **release** is a named snapshot of your repository at a point in time — typically tied to a paper submission or publication.
+
+Releases use **semantic versioning**: `vMAJOR.MINOR.PATCH`
+
+- `v1.0.0` — first stable, publication-ready version
+- `v1.1.0` — new features added after publication
+- `v1.0.1` — bug fix, no new features
+
+::: {.callout-tip}
+For most research code, `v1.0.0` is the only release you will ever make — and that is completely fine.
+:::
+
+::: {.callout-important}
+A GitHub release is a stable snapshot — but it is **not permanent**. It can be deleted or renamed, has no DOI, and cannot be cited in a paper on its own.
+:::
+
+---
+
+## Zenodo: Making your code citable
+
+[**Zenodo**](https://zenodo.org) is an open research repository hosted by CERN. It will:
+
+- Archive a permanent copy of your code
+- Issue a **DOI** that can be cited in papers
+- Index your work so others can find it
+
+GitHub and Zenodo work together: when you create a release on GitHub, Zenodo automatically mints a DOI for that release, plus a persistent DOI for the entire repository.
+
+### Workflow
+
+::: {.callout-tip}
+Today we will use [sandbox.zenodo.org](https://sandbox.zenodo.org) — a practice environment that issues test DOIs. It requires a separate account from zenodo.org, but the experience is identical.
+:::
+
+1. Go to [sandbox.zenodo.org](https://sandbox.zenodo.org) and sign in
+2. Navigate to your account → **GitHub**
+3. Find your repository in the list and **toggle it on**
+4. Go to your repository on GitHub and create a new **Release** (tag: `v1.0.0`)
+5. Return to Zenodo — your DOI will appear within a few minutes
+
+::: {.callout-caution}
+### Exercises
+
+4.4 Make the repository public (`Settings → General → Change repository visibility`)
+
+4.5 Link your GitHub account to [sandbox.zenodo.org](https://sandbox.zenodo.org) and enable tracking of your repository
+
+4.6 Create a `v1.0.0` release — then watch Zenodo mint your DOI
+:::
+
+---
+
+## README extras
+
+### DOI badge
+
+Zenodo provides a DOI badge for your release — copy the Markdown snippet and paste it into your `README.md`.
+
+Other badges (licence, latest release, build status) can be generated at [shields.io](https://shields.io).
+
+```markdown
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxx)
+```
+
+### `CITATION.cff`
+
+A `CITATION.cff` file tells GitHub — and anyone who finds your repo — exactly how to cite your work. GitHub renders it as a **"Cite this repository"** button automatically.
+
+```yaml
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Cox
+    given-names: Dezerae
+    orcid: https://orcid.org/0000-0000-0000-0000
+title: "Spacewalk Analysis"
+version: 1.0.0
+doi: 10.5072/zenodo.xxxxxx
+date-released: 2026-04-22
+```
+
+::: {.callout-tip}
+[cffinit](https://citation-file-format.github.io/cff-initializer-javascript/) generates a valid `CITATION.cff` in your browser — no syntax knowledge needed.
+:::
+
+::: {.callout-caution}
+### Exercises
+
+4.7 Copy the DOI badge from your Zenodo record and add it to `README.md`
+
+4.8 Use [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/) to generate a `CITATION.cff`, add it to your repository, and push — check the **"Cite this repository"** button appears on GitHub
+:::
+
+---
+
+## Data repositories
+
+GitHub is the right home for your **code** — but it is not built for **data**.
+
+- ❌ GitHub has a 100 MB file size limit
+- ❌ Large files bloat your repository history
+- ❌ Raw data should not be version-controlled alongside code
+- ❌ GitHub repos can be deleted — DOIs from data repositories cannot
+
+::: {.callout-note}
+Raw data belongs in a **data repository** — a permanent, citable, indexed home designed for research outputs.
+:::
+
+### Discipline-specific repositories
+
+| Repository | Best for | Discipline |
+|---|---|---|
+| [PRIDE](https://www.ebi.ac.uk/pride/) | Proteomics (mass spec) | Proteomics |
+| [GEO](https://www.ncbi.nlm.nih.gov/geo/) | Gene expression data | Genomics |
+| [SRA](https://www.ncbi.nlm.nih.gov/sra/) | Raw sequencing data | Genomics |
+| [BioImage Archive](https://www.ebi.ac.uk/bioimage-archive/) | Biological imaging | Imaging |
+| [OpenNeuro](https://openneuro.org) | Neuroimaging (MRI, EEG) | Neuroimaging |
+| [PANGAEA](https://www.pangaea.de) | Environmental & Earth science | Spatial |
+| [GBIF](https://www.gbif.org) | Biodiversity & occurrence data | Ecology |
+
+::: {.callout-tip}
+Can't find a match? [re3data.org](https://www.re3data.org) indexes 2,000+ repositories — search by subject, data type, or country.
+:::
+
+### General repositories
+
+| Repository | Best for |
+|---|---|
+| [Zenodo](https://zenodo.org) | Any research output |
+| [Figshare](https://figshare.com) | Figures, datasets, code |
+| [OSF](https://osf.io) | Full projects + preprints |
+
+::: {.callout-tip}
+When in doubt, **Zenodo** or **Figshare** accept almost anything — but many journals mandate a discipline-specific repository. Always check first.
+:::
+
+::: {.callout-caution}
+### Exercises
+
+4.9 For each data type you work with, identify the standard or recommended repository — start with your target journal's data availability policy
+
+4.10 Are there any data types without a discipline-specific home? Note them — **Zenodo** or **Figshare** are your fallback
+:::
+
+---
+
+## Pre-publication checklist
+
+Before making your repository public:
+
+- ✅ **Structure** — does it follow the standard layout?
+- ✅ **Clean code** — hardcoded paths, dead code, debug prints, TODOs, irregular naming all removed
+- ✅ **No raw data or results** in the repo (in `.gitignore` and preferably in a data repository)
+- ✅ **README** — could a stranger clone and run your code from this alone?
+- ✅ **Environment file** — is `environment.yml` or `renv.lock` up to date?
+- ✅ **Licence** — is a `LICENSE` file present with an appropriate licence?
+- ✅ **No credentials** — API keys, passwords, tokens all removed
+
+::: {.callout-tip}
+You do not need perfection — simply clarity. A stranger (or future you) should be able to clone, run, and understand your code independently.
+:::
+
+---
+
+## Where to from here?
+
+**Tools & platforms**
+
+- [re3data.org](https://www.re3data.org) — registry of research data repositories
+- [Quarto Manuscripts](https://quarto.org/docs/manuscripts/) — publish code and data integrated into manuscripts
+- [Code Ocean](https://codeocean.com) — platform for executable code capsules
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/) — automate reproducible workflows
+- [GitHub templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) — standardised repo structures
+
+**Reading & learning**
+
+- [FAIR principles](https://www.go-fair.org/fair-principles/) — Findable, Accessible, Interoperable, Reusable
+- [The Turing Way](https://book.the-turing-way.org/) — comprehensive handbook for reproducible research
+- [Software Carpentry: Better Research Software](https://carpentries-incubator.github.io/better-research-software/)
+- [ReproducibiliTea](https://www.reproducibilitea.org/) — journal club and community for reproducible research

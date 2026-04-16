@@ -1,0 +1,365 @@
+---
+title: "Session 2: Version Control"
+---
+
+## Overview
+
+This session covers how to track changes to your code over time using Git, and how to put your work online with GitHub.
+
+---
+
+## The problem with "final"
+
+We've all been there:
+
+```
+analysis_v1.py
+analysis_v2.py
+analysis_FINAL.py
+analysis_FINAL_v2.py
+analysis_ACTUAL_FINAL.py
+```
+
+Version control replaces this chaos with a systematic, reversible history of every change you make.
+
+> *Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.*
+>
+> — The Turing Way
+
+---
+
+## Git
+
+**Git** is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across almost every file type, with revision history, forever.
+
+### Key concepts
+
+**Repository** — a folder that Git watches, containing all the files to be tracked. It holds the full history of every change.
+
+**Commit** — a snapshot of your project at a point in time.
+
+**Staging** — the process of selecting which changes to include in the next snapshot.
+
+---
+
+## Repositories
+
+A repository (or *repo*) is just a normal folder with a hidden `.git` subfolder — that's where Git stores the full history. A typical research repo looks like:
+
+```
+my_project/
+├── data/
+│   ├── raw/          # original, untouched data — never modify!
+│   └── processed/    # cleaned, transformed data
+├── src/              # analysis scripts
+│   ├── analysis.py
+│   └── visualisation.py
+├── notebooks/        # exploratory analyses
+│   └── model_testing.ipynb
+├── results/          # summaries and visualisations
+│   └── report.csv
+├── environment.yml   # or renv.lock
+├── .gitignore
+└── README.md
+```
+
+---
+
+## README
+
+Every repository should have a `README.md` — the quick-start guide for your project.
+
+A good README covers:
+
+- **What** the code does
+- What **dependencies** are required
+- How to **install and run** it
+- What the **inputs & outputs** are
+
+READMEs are written in **Markdown** — a lightweight syntax that adds formatting to plain text:
+
+```markdown
+# Heading
+## Subheading
+
+**bold** and *italic*
+
+- bullet list
+1. numbered list
+
+[link text](https://site.com)
+
+```python
+# code block
+```
+```
+
+::: {.callout-tip}
+A more comprehensive guide to Markdown syntax is available [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+:::
+
+---
+
+## `.gitignore`
+
+::: {.callout-important}
+Not everything should be tracked by Git. A `.gitignore` file lists files and folders that Git will ignore.
+:::
+
+At minimum, **never** track:
+
+- ❌ Raw data
+- ❌ Results that can be regenerated from code
+- ❌ Non-text files (e.g. `.Rhistory`, `.DS_Store`, Office files)
+- ❌ Credentials and API keys
+
+```bash
+# Ignore all .csv files in the data directory
+data/*.csv
+
+# Ignore the entire results directory
+results/*
+
+# Ignore specific system files
+.DS_Store
+.Rhistory
+credentials.txt
+```
+
+::: {.callout-tip}
+[gitignore.io](https://www.gitignore.io) generates `.gitignore` templates for any language.
+:::
+
+---
+
+## Committing
+
+Each time you want Git to take a snapshot, you create a **commit**. A good commit has:
+
+1. A logical, focused set of changes — not everything all at once
+2. A short, meaningful message — *what* changed, and *why*?
+
+| ❌ | ✅ |
+|---|---|
+| *"Fix"* | *"Fix legend label overlap in volcano plot"* |
+| *"change colours"* | *"Change bar graph palette to improve contrast"* |
+
+::: {.callout-important}
+Commit messages are notes to your future self — who will not remember what *"fixed it"* means!
+:::
+
+::: {.callout-tip}
+Commit early, commit often. Small, focused commits are far easier to understand — and undo — than one giant commit at the end.
+:::
+
+### Bash workflow
+
+```bash
+# Navigate to your project and initialise Git
+cd my_project
+git init
+
+# Check what Git can see
+git status
+
+# Stage a file and commit
+git add filename
+git commit -m "Your commit message here"
+```
+
+::: {.callout-important}
+`git add .` stages *everything*. Use it only after setting up your `.gitignore` — otherwise you may commit files you didn't mean to.
+:::
+
+### GUI workflow
+
+::: {.panel-tabset}
+
+### Python (VSCode)
+
+1. Open your project folder in VSCode
+2. Click the **Source Control** icon in the left sidebar (`Ctrl+Shift+G`)
+3. Click **Initialise Repository**
+4. Files appear with **U** (untracked) badges
+5. Hover a file and click **+** to stage it — badge changes to **A**
+6. Type a commit message in the box at the top
+7. Click **Commit** (✓)
+
+### R (RStudio)
+
+1. Go to **File → New Project → Existing Directory**
+2. Navigate to your project folder and click **Create Project**
+3. Go to **Tools → Project Options → Git/SVN**
+4. Change version control system to **Git** and click OK
+5. Restart RStudio — the **Git tab** appears top-right
+6. Files appear with **?** (untracked) badges
+7. Tick the checkbox next to files to stage them — badge changes to **A**
+8. Click **Commit**, write a message, click **Commit**
+
+:::
+
+::: {.callout-caution}
+### Exercises
+
+2.1 Initialise a `git` repository within the `spacewalk_analysis` folder
+
+2.2 Create a `.gitignore` — which files should you exclude?
+
+2.3 Make your first commit with the original folder components
+
+2.4 Write a `README.md` that describes the project, then commit your changes
+:::
+
+---
+
+## Git vs GitHub
+
+::: {.callout-note}
+**Git** lives on your computer. **GitHub** is a website that talks to Git. They work together — but they are not the same thing.
+:::
+
+| Git | GitHub |
+|---|---|
+| Runs on your machine | A website (cloud hosting) |
+| Tracks changes to files | Stores a copy of your repo online |
+| Works entirely offline | Enables sharing, collaboration, and backup |
+| The version control *engine* | The version control *destination* |
+
+::: {.callout-important}
+You can use Git without GitHub — but you can't use GitHub without Git.
+:::
+
+---
+
+## Pushing to GitHub
+
+### Bash workflow
+
+```bash
+# 1. Create a new empty repository on GitHub (no README, no .gitignore)
+
+# 2. Connect your local repo and push
+git remote add origin https://github.com/username/repo-name.git
+git branch -M main
+git push -u origin main
+
+# 3. All future pushes
+git push
+```
+
+::: {.callout-note}
+You only run `git remote add` once. After that, `git push` and `git pull` know where to go.
+:::
+
+### GUI workflow
+
+::: {.panel-tabset}
+
+### Python (VSCode)
+
+1. Open the **Source Control** tab (`Ctrl+Shift+G`)
+2. Click **Publish Branch** (appears after your first commit)
+3. Sign in to GitHub if prompted
+4. Choose **Public** or **Private**
+5. VSCode creates the repo on GitHub and pushes automatically
+6. Future commits: click **Sync Changes** (↑↓) to push
+
+### R (RStudio)
+
+1. In the console, run `usethis::use_github()`
+2. Choose **Public** or **Private** when prompted
+3. RStudio creates the repo on GitHub and pushes automatically
+4. Future commits: click the **Push** button (↑) in the Git tab
+
+:::
+
+::: {.callout-caution}
+### Exercises
+
+2.5 Publish your local `spacewalk_analysis` repository to GitHub
+
+2.6 Explore the repository on GitHub — commit history, README, and file structure
+
+2.7 Update a file locally, then push the change to GitHub
+:::
+
+---
+
+## Cloning
+
+**Cloning** is the opposite of publishing — you copy a repository from GitHub onto your local machine.
+
+```bash
+git clone https://github.com/username/repo-name.git
+cd repo-name
+```
+
+::: {.callout-note}
+`git clone` downloads the files, the full commit history, and the Git setup needed to keep working locally.
+:::
+
+### GUI cloning
+
+::: {.panel-tabset}
+
+### Python (VSCode)
+
+1. Open the Command Palette (`Ctrl+Shift+P`)
+2. Run **Git: Clone**
+3. Paste the repository URL
+4. Choose where to save it
+5. Click **Open** when prompted
+
+### R (RStudio)
+
+1. Go to **File → New Project → Version Control → Git**
+2. Paste the repository URL
+3. Choose where to save it
+4. Click **Create Project**
+
+### From GitHub
+
+1. Open the repository on GitHub
+2. Click the green **Code** button
+3. Click **Open with GitHub Desktop**
+4. Choose a local save location and click **Clone**
+
+:::
+
+---
+
+## Your GitHub homepage
+
+A repository named **exactly the same as your username** becomes your public profile page.
+
+It's a low-effort way to introduce yourself, showcase projects, and link to publications or your lab website.
+
+::: {.callout-caution}
+### Exercises
+
+2.8 Browse [awesome-readme](https://github.com/matiassingers/awesome-readme) for inspiration
+
+2.9 Create a new repository on GitHub named `your-username`
+
+2.10 Clone it to your computer and open in your preferred IDE
+
+2.11 Write your `README.md` — commit along the way!
+
+2.12 Push your changes back to GitHub
+:::
+
+---
+
+## Quick reference
+
+| Action | Command |
+|---|---|
+| Initialise a repo | `git init` |
+| Check status | `git status` |
+| Stage changes | `git add filename` or `git add .` |
+| Commit | `git commit -m "your message"` |
+| View history | `git log --oneline` |
+| Connect to GitHub | `git remote add origin <url>` |
+| Push to GitHub | `git push` |
+| Pull from GitHub | `git pull` |
+| Clone a repo | `git clone <url>` |
