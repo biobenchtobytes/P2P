@@ -10,44 +10,56 @@
 
 ## Enter: Version control
 
-![](images/version_control.png){fig-align="center" height="100"}
+![](images/version_control.png){fig-align="center" height="85"}
 
-> Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.
+> Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed. — *The Turing Way*
 
-— *The Turing Way*
 
 [**Git**]() is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across (almost) every file type, with revision history, forever.
 
 Git comes with its own list of tricky new terminology — it's like another language!
 
 :::: {.columns}
-::: {.column width="33%"}
-![](images/repository.png){fig-align="center" height="165"}
+::: {.column width="30%"}
+![](images/repository.png){fig-align="center" height="150"}
 
 ::: {style="text-align:center"}
-[**Repository**]()
-:::
 
+<h5 align="center">
+**Repository**
+</h5>
+
+:::
 A folder that Git watches, containing all the files to be tracked
 :::
+::: {.column width="3%"}
 
-::: {.column width="33%"}
-![](images/staging.png){fig-align="center" height="165"}
-
-::: {style="text-align:center"}
-[**Staging**]()
 :::
 
+::: {.column width="30%"}
+![](images/staging.png){fig-align="center" height="150"}
+
+::: {style="text-align:center"}
+<h5 align="center">
+**Staging**
+</h5>
+
+:::
 The process of selecting which changes to include in the next snapshot
 :::
+::: {.column width="3%"}
 
-::: {.column width="33%"}
-![](images/camera-flash.png){fig-align="center" height="165"}
-
-::: {style="text-align:center"}
-[**Commit**]()
 :::
 
+::: {.column width="30%"}
+![](images/camera-flash.png){fig-align="center" height="150"}
+
+::: {style="text-align:center"}
+<h5 align="center">
+**Commit**
+</h5>
+
+:::
 A snapshot of your project at a point in time
 :::
 ::::
@@ -96,11 +108,10 @@ A README is written in [markdown]() (`.md`), which is a(nother) language that ad
 
 :::
 ::: {.column width="45%"}
-![](images/markdown.png){fig-align="left" height="165"}
+![](images/markdown.png){fig-align="left" height="200"}
 :::
 :::
 
-![](images/readme.png){fig-align="center" height="250"}
 
 A good README should cover:
 
@@ -112,6 +123,9 @@ A good README should cover:
 ::: {.callout-tip}
 ### You can find a more comprehensive guide to markdown syntax [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 :::
+
+![](images/readme.png){fig-align="center" width="100%"}
+
 
 ## `.gitignore`
 
