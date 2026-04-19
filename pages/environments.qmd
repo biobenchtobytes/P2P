@@ -1,24 +1,26 @@
----
-title: "Environments"
----
+# Environments
 
-## What is an environment?
+## Context for your code
 
-![](images/plan.png){fig-align="center" height="350"}
+![](images/plan.png){fig-align="center" height="400"}
 
-Think of your coding workspace like a house — and an environment like the blueprint for a single room. It records exactly what is in it (every package, every version) so anyone can recreate it from scratch.
+**Think of your coding workspace like a house.**
 
-Concretely, an environment captures:
+Just as a blender belongs in the kitchen and not the bedroom — packages are installed *per environment*, not globally. And just like pots and pans need a stove, some packages depend on others to function.
+
+An environment captures the exact software context your code needs to run:
 
 - A specific version of Python or R
-- A specific set of packages, each *pinned* to a specific version
+- A specific set of packages, each [pinned]() to a specific version
 - The dependencies those packages require
 
 ::: {.callout-note}
-The environment file is the blueprint: one document per project, which documents exactly what software is needed to run the code. Anyone with the blueprint can recreate the environment exactly.
+### The environment file is like a **blueprint**: one file for each room, which documents exactly what is in it, the colour, size, make, model, and precise position. Anyone with the blueprint can recreate the room exactly.
 :::
 
 ## Tools
+
+There are a host of tools to manage environments — the right choice depends on your language and workflow.
 
 | Tool | Language | Best for |
 |---|---|---|
@@ -28,21 +30,26 @@ The environment file is the blueprint: one document per project, which documents
 | **Docker** | Any | Complete reproducibility & isolation |
 
 ::: {.callout-note}
-This workshop focuses on **Conda** (Python) and **renv** (R) — the most practical choices for most research workflows.
+### We will focus on **Conda** (Python) and **renv** (R) — usually the most practical choices for research workflows.
 :::
 
 ## The basic workflow
 
-1. Create environment
-2. Activate environment
-3. Install packages
-4. Do your work
-5. **Export environment file**
-6. Share with collaborators
+```{mermaid}
+graph TD;
+    A[Create environment] --> B[Activate environment];
+    B --> C[Install packages];
+    C --> D[Do your work];
+    D --> E[Export environment file];
+    E --> F[Share with collaborators];
 
-::: {.callout-important}
-The export step is the one most people skip — and the one that makes everything else reproducible.
-:::
+    style A fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
+    style B fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
+    style C fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
+    style D fill:#ffffff,stroke:#FF6B35,stroke-width:3px
+    style E fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
+    style F fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
+```
 
 ## Creating an environment
 
@@ -50,14 +57,18 @@ The export step is the one most people skip — and the one that makes everythin
 
 ### Python (Conda)
 
+Check Conda is installed:
 ```bash
-# Check Conda is installed
 conda --version
+```
 
-# Create a new environment
+Create a new environment:
+```bash
 conda create --name my_project python=3.11
+```
 
-# Activate it
+Activate it:
+```bash
 conda activate my_project
 ```
 
@@ -65,6 +76,7 @@ conda activate my_project
 
 renv works inside an RStudio project — no separate install needed.
 
+Open or create an RStudio project, then initialise renv:
 ```r
 install.packages("renv")
 renv::init()
@@ -75,7 +87,7 @@ This creates a project-local library and a `renv.lock` file to track your packag
 :::
 
 ::: {.callout-important}
-Always activate your environment before installing packages or running code — otherwise changes go into your base environment.
+### Always activate your environment before installing packages or running code — otherwise changes go into your base environment.
 :::
 
 ## Installing packages
@@ -84,27 +96,33 @@ Always activate your environment before installing packages or running code — 
 
 ### Python (Conda)
 
+Install packages into your active environment:
 ```bash
-# Install via conda (preferred)
 conda install numpy pandas matplotlib
+```
 
-# Or via pip (for packages not on conda)
+Or using pip (for packages not available via conda):
+```bash
 pip install package-name
 ```
 
 ::: {.callout-note}
-Prefer `conda install` where possible — it handles dependency conflicts better than pip.
+### Prefer `conda install` where possible — it handles dependency conflicts better than pip. Use pip only for packages unavailable on conda.
 :::
 
 ### R (renv)
 
+Install packages as normal — renv tracks them automatically:
 ```r
-# Install as normal — renv tracks automatically
 install.packages("ggplot2")
 install.packages("tidyverse")
 ```
 
 renv records each install in `renv.lock`.
+
+::: {.callout-note}
+### Any package installed while renv is active is automatically tracked. No extra steps needed!
+:::
 
 :::
 
@@ -114,53 +132,94 @@ renv records each install in `renv.lock`.
 
 ### Python (Conda)
 
+Export your environment to a file:
 ```bash
-# Export full environment
 conda env export > environment.yml
+```
 
-# Recreate from file
+A collaborator can recreate it exactly:
+```bash
 conda env create -f environment.yml
+```
 
-# For a cleaner, more portable file (only what you explicitly installed)
+For a cleaner, more portable file — export only what you explicitly installed:
+```bash
 conda env export --from-history > environment.yml
 ```
 
 ### R (renv)
 
+Snapshot your current package state:
 ```r
-# Snapshot current state
 renv::snapshot()
+```
 
-# Collaborator restores with:
+A collaborator restores it with:
+```r
 renv::restore()
 ```
 
 :::
 
 ::: {.callout-tip}
-`environment.yml` or `renv.lock` are now as important as your code for reproducibility.
+### `environment.yml` or `renv.lock` are now as important as your code for reproducibility.
 :::
 
 ## In practice
 
 ::: {.callout-caution}
+
 ### Exercises
 
-1.5 Open the `spacewalks` analysis and locate the script for your preferred language
+1.5 Open the `analysis` folder and locate the script for your preferred language (Python or R)
 
 1.6 Create a new environment for this project
 
 1.7 Install the packages required for the example script
 
 1.8 Export the environment file
+
 :::
 
 ## Quick reference
 
-| | 🐍 Python (Conda) | R (renv) |
-|---|---|---|
-| **Create** | `conda create --name proj python=3.11` | `renv::init()` |
-| **Activate** | `conda activate proj` | *(active within project)* |
-| **Install** | `conda install numpy pandas ...` | `install.packages("pkg")` |
-| **Export** | `conda env export > environment.yml` | `renv::snapshot()` |
-| **Restore** | `conda env create -f environment.yml` | `renv::restore()` |
+<style>
+  .quick-ref td { border: none !important; }
+</style>
+
+<table class="quick-ref" style="width:100%; font-size:0.85em; border-collapse:collapse; margin-top:0.5em">
+  <tr>
+    <td style="text-align:center; font-weight:bold; padding-bottom:0.6em; width:35%">🐍 Python (Conda)</td>
+    <td style="width:30%"></td>
+    <td style="text-align:center; font-weight:bold; padding-bottom:0.6em; width:35%">R (renv)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center; padding:0.3em"><code>conda create --name proj python=3.11</code></td>
+    <td style="text-align:center"><div style="border:3px solid #2EC4B6;padding:5px 8px;border-radius:4px;background:#fff">Create environment</div></td>
+    <td style="text-align:center; padding:0.3em"><code>renv::init()</code></td>
+  </tr>
+  <tr><td></td><td style="text-align:center">↓</td><td></td></tr>
+  <tr>
+    <td style="text-align:center; padding:0.3em"><code>conda activate proj</code></td>
+    <td style="text-align:center"><div style="border:3px solid #2EC4B6;padding:5px 8px;border-radius:4px;background:#fff">Activate environment</div></td>
+    <td style="text-align:center; padding:0.3em; font-style:italic; color:#888">active within project</td>
+  </tr>
+  <tr><td></td><td style="text-align:center">↓</td><td></td></tr>
+  <tr>
+    <td style="text-align:center; padding:0.3em"><code>conda install numpy pandas ...</code></td>
+    <td style="text-align:center"><div style="border:3px solid #2EC4B6;padding:5px 8px;border-radius:4px;background:#fff">Install packages</div></td>
+    <td style="text-align:center; padding:0.3em"><code>install.packages("pkg")</code></td>
+  </tr>
+  <tr><td></td><td style="text-align:center">↓</td><td></td></tr>
+  <tr>
+    <td style="text-align:center; padding:0.3em; font-style:italic; color:#888">write your scripts</td>
+    <td style="text-align:center"><div style="border:3px solid #FF6B35;padding:5px 8px;border-radius:4px;background:#fff">Do your work</div></td>
+    <td style="text-align:center; padding:0.3em; font-style:italic; color:#888">write your scripts</td>
+  </tr>
+  <tr><td></td><td style="text-align:center">↓</td><td></td></tr>
+  <tr>
+    <td style="text-align:center; padding:0.3em"><code>conda env export > environment.yml</code></td>
+    <td style="text-align:center"><div style="border:3px solid #2EC4B6;padding:5px 8px;border-radius:4px;background:#fff">Export environment file</div></td>
+    <td style="text-align:center; padding:0.3em"><code>renv::snapshot()</code></td>
+  </tr>
+</table>

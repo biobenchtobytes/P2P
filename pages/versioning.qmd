@@ -1,46 +1,94 @@
----
-title: "Versioning"
----
+# Versioning
 
-## Software is not static
+## The software development life cycle
 
-![](images/lifecycle.png){fig-align="center" height="300"}
+![](images/lifecycle.png){fig-align="center" height="500"}
 
-Every piece of software you use is actively maintained. New features are added, bugs are fixed, and sometimes the way a function works *changes entirely*.
+**→ *Software is not static!***
 
-## Python example
+## Versions
 
-![](images/python-timeline.png){fig-align="center" height="150"}
+Every part of the software you use is actively maintained. New features are added, bugs are fixed, and sometimes the way a function works *changes entirely*.
 
-```python
+![](images/python-timeline.png){fig-align="center" height="200"}
+
+```{python}
+#| echo: true
+#| output: false
 import random
 population = {'A', 'B', 'C', 'D'}
-
-# Python 3.10 and earlier — works fine
-random.sample(population, 2)  # returns e.g. ['B', 'A']
-
-# Python 3.11+ — raises a TypeError
-# random.sample() no longer accepts sets
 ```
 
-In Python 3.11, `random.sample()` stopped accepting sets to enforce deterministic results. The same code, different behaviour — because the language changed under it.
-
-## R example
-
-![](images/R-timeline.png){fig-align="center" height="150"}
-
-```r
-df <- data.frame(group = c('A', 'A', 'B', 'B'), value = c(1, 2, 3, 4))
-
-# R < 4.0
-class(df$group)  # "factor"
-
-# R 4.0+
-class(df$group)  # "character"
+::: {.columns}
+::: {.column width="50%"}
+**In Python 3.10 and earlier:**
+```{python}
+#| echo: true
+#| eval: false
+random.sample(population, 2)
 ```
-
-In R 4.0, `stringsAsFactors` changed from `TRUE` to `FALSE` by default — silently breaking any code that assumed string columns were factors.
-
-::: {.callout-important}
-Code written in 2024 may not behave the same way in 2026. Two researchers running the "same" code on different installations may get different results.
+```
+['B', 'A']
+```
 :::
+
+::: {.column width="50%"}
+**The same code in Python 3.11+:**
+```{python}
+#| echo: true
+#| error: true
+random.sample(population, 2)
+```
+:::
+:::
+
+---
+
+![](images/R-timeline.png){fig-align="center" height="200"}
+
+```{r}
+#| echo: true
+#| output: false
+df <- data.frame(
+  group = c('A', 'A', 'B', 'B'),
+  value = c(1, 2, 3, 4)
+)
+```
+
+::: {.columns}
+::: {.column width="50%"}
+**In R < 4.0:**
+```{r}
+#| echo: true
+#| eval: false
+class(df$group)
+```
+
+```
+[1] "factor"
+```
+:::
+
+::: {.column width="50%"}
+**The same code in R 4.0+:**
+```{r}
+#| echo: true
+#| output: false
+class(df$group)
+```
+
+```
+[1] "character"
+```
+:::
+:::
+
+---
+
+This is normal (and mostly great!) — but it means:
+
+❌ Code written in 2024 may not behave the same way in 2026
+
+❌ A script that worked last week may break after an update
+
+❌ Two researchers running the "same" code may get different results
