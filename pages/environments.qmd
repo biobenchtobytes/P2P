@@ -2,7 +2,7 @@
 
 ## Context for your code
 
-![](images/plan.png){fig-align="center" height="400"}
+![](images/plan.png){fig-align="center" height="220"}
 
 **Think of your coding workspace like a house.**
 
@@ -32,24 +32,6 @@ There are a host of tools to manage environments — the right choice depends on
 ::: {.callout-note}
 ### We will focus on **Conda** (Python) and **renv** (R) — usually the most practical choices for research workflows.
 :::
-
-## The basic workflow
-
-```{mermaid}
-graph TD;
-    A[Create environment] --> B[Activate environment];
-    B --> C[Install packages];
-    C --> D[Do your work];
-    D --> E[Export environment file];
-    E --> F[Share with collaborators];
-
-    style A fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
-    style B fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
-    style C fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
-    style D fill:#ffffff,stroke:#FF6B35,stroke-width:3px
-    style E fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
-    style F fill:#ffffff,stroke:#2EC4B6,stroke-width:3px
-```
 
 ## Creating an environment
 

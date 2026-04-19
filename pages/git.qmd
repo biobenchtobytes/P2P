@@ -2,33 +2,27 @@
 
 ## The problem with "final"
 
-![](images/final_versions_1.png){fig-align="center"}
+![](images/final_versions_1.png){fig-align="center" height="150"}
 
-![](images/final_versions_2.png){fig-align="center"}
+![](images/final_versions_2.png){fig-align="center" height="150"}
 
-![](images/final_versions_3.png){fig-align="center"}
+![](images/final_versions_3.png){fig-align="center" height="150"}
 
 ## Enter: Version control
 
-![](images/version_control.png){fig-align="center" height="180"}
+![](images/version_control.png){fig-align="center" height="100"}
 
 > Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.
 
 — *The Turing Way*
 
-## Git: Local version control
-
-![](images/version_control.png){fig-align="center" height="180"}
-
 [**Git**]() is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across (almost) every file type, with revision history, forever.
 
 Git comes with its own list of tricky new terminology — it's like another language!
 
-## Git's guts
-
 :::: {.columns}
 ::: {.column width="33%"}
-![](images/repository.png){fig-align="center" height="300"}
+![](images/repository.png){fig-align="center" height="165"}
 
 ::: {style="text-align:center"}
 [**Repository**]()
@@ -38,7 +32,7 @@ A folder that Git watches, containing all the files to be tracked
 :::
 
 ::: {.column width="33%"}
-![](images/staging.png){fig-align="center" height="300"}
+![](images/staging.png){fig-align="center" height="165"}
 
 ::: {style="text-align:center"}
 [**Staging**]()
@@ -48,7 +42,7 @@ The process of selecting which changes to include in the next snapshot
 :::
 
 ::: {.column width="33%"}
-![](images/camera-flash.png){fig-align="center" height="300"}
+![](images/camera-flash.png){fig-align="center" height="165"}
 
 ::: {style="text-align:center"}
 [**Commit**]()
@@ -102,11 +96,11 @@ A README is written in [markdown]() (`.md`), which is a(nother) language that ad
 
 :::
 ::: {.column width="45%"}
-![](images/markdown.png){fig-align="left" height="300"}
+![](images/markdown.png){fig-align="left" height="165"}
 :::
 :::
 
-![](images/readme.png){fig-align="center" height="450"}
+![](images/readme.png){fig-align="center" height="250"}
 
 A good README should cover:
 
@@ -151,20 +145,6 @@ credentials.txt
 
 ::: {.callout-tip}
 ### [gitignore.io](https://www.gitignore.io) generates `.gitignore` templates for any language.
-:::
-
-## In Practice
-
-::: {.callout-caution}
-
-### Exercises
-
-Let's return to our analysis of NASA's spacewalk data.
-
-2.1 Initialise a `git` repository within the `analysis` folder
-
-2.2 Create a `.gitignore` — which files should you exclude?
-
 :::
 
 ## Commits
@@ -257,11 +237,16 @@ git commit -m "Commit message here"
 
 Let's return to our analysis of NASA's spacewalk data.
 
+2.1 Initialise a `git` repository within the `analysis` folder
+
+2.2 Create a `.gitignore` — which files should you exclude?
+
 2.3 Make your first commit with the original folder components
 
 2.4 Write a `README.md` that describes the project, then commit your changes
 
 :::
+
 
 
 ## Quick reference

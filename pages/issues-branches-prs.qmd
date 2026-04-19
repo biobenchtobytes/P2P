@@ -1,4 +1,4 @@
-# Issues, Branches & Pull Requests
+# Collaborative workflow
 
 ## Issues: Tools to track what needs fixing
 
@@ -49,7 +49,7 @@ With collaborators, unprotected `main` means:
 
 ❌ No way to review work before it goes live
 
-![](images/branching.png){fig-align="center" height="250"}
+![](images/branching.png){fig-align="center" height="140"}
 
 ## Branches: The workflow
 
@@ -99,7 +99,7 @@ When your branch is ready, you open a `pull request` (PR) — a request to merge
 - Approve the changes — or ask for revisions
 - Merge once everyone is happy
 
-![](images/merging.png){fig-align="center" height="250"}
+![](images/merging.png){fig-align="center" height="140"}
 
 ## Pull Requests: Workflow
 
@@ -176,7 +176,7 @@ When your branch is ready, you open a `pull request` (PR) — a request to merge
   </tr>
   <tr style="background:#f8f8f8">
     <td style="font-weight:bold; padding:0.4em 0.8em">Create a branch (RStudio)</td>
-    <td style="padding:0.4em 0.8em">Git tab → branch icon 🔀 → New Branch</td>
+    <td style="padding:0.4em 0.8em">GitHub → Branches → New Branch</td>
   </tr>
   <tr>
     <td style="font-weight:bold; padding:0.4em 0.8em">Push a branch</td>

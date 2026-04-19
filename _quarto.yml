@@ -11,12 +11,10 @@ book:
     - part: "SESSION 1: Code Context"
       chapters:
         - pages/versioning.qmd
-        - pages/dependencies.qmd
         - pages/environments.qmd
     - part: "SESSION 2: Version Control"
       chapters:
-        - pages/repositories.qmd
-        - pages/committing.qmd
+        - pages/git.qmd
         - pages/github.qmd
     - part: "SESSION 3: Collaboration"
       chapters:
@@ -41,6 +39,7 @@ format:
   html:
     theme: flatly
     css: theme.css
+    number-sections: false
 
 page-footer: |
   Material developed by Bench2Bytes © 2025

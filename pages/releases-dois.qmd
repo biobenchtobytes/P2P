@@ -39,7 +39,7 @@ DOIs are generated via a process called **minting** — a release becomes a perm
 :::
 
 ::: {.column width="60%"}
-![](images/zenodo_versions.png){fig-align="center" height="450px"}
+![](images/zenodo_versions.png){fig-align="center" height="250px"}
 :::
 :::
 

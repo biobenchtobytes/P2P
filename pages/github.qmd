@@ -30,8 +30,6 @@
 ### You can use Git without GitHub — but you can't use GitHub without Git.
 :::
 
-## Pushing to GitHub: Bash workflow
-
 Once you have a local repo, you need to `push` it to GitHub:
 
 1. Create a new **empty** repository on GitHub (no README, no `.gitignore`)
@@ -48,7 +46,7 @@ git push -u origin main
 ### You only run `git remote add` once. After that, `git push` and `git pull` know where to go.
 :::
 
-## Pushing to GitHub: GUI workflow
+Alternatively, you can use the GUI in VSCode or RStudio to publish your local repo to GitHub.
 
 ::: {.panel-tabset}
 
@@ -134,8 +132,6 @@ cd repo-name
 ::: {.callout-note}
 ### `git clone` downloads the files, full commit history, and Git setup.
 :::
-
-## Cloning: GUI workflow
 
 ::: {.panel-tabset}
 
