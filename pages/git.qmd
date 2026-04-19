@@ -2,11 +2,11 @@
 
 ## The problem with "final"
 
-![](images/final_versions_1.png){fig-align="center" height="150"}
+![](images/finaL_versions_1.png){fig-align="center" height="150"}
 
-![](images/final_versions_2.png){fig-align="center" height="150"}
+![](images/finaL_versions_2.png){fig-align="center" height="150"}
 
-![](images/final_versions_3.png){fig-align="center" height="150"}
+![](images/finaL_versions_3.png){fig-align="center" height="150"}
 
 ## Enter: Version control
 
