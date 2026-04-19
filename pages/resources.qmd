@@ -2,11 +2,6 @@
 title: "Resources"
 ---
 
-## Community
-
-![](images/hacky-hours.png){fig-align="center"}
-
-Look out for local **Hacky Hours** — informal drop-in sessions where researchers share coding tips, get unstuck, and build community. A low-pressure way to keep the momentum going after the workshop.
 
 ## Tools & platforms
 

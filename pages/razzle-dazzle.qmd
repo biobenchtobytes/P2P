@@ -1,0 +1,50 @@
+# README razzle-dazzle
+
+## Badges
+
+Badges are a visual way to communicate important information about your project at a glance:
+
+![](images/badges.png){width="80%" fig-align="center"}
+
+Zenodo provides a DOI badge for your release — simply copy the markdown snippet and paste it into the `README.md`.
+
+Other badges can be generated from services like [shields.io](https://shields.io) — e.g. to show your license, build status, or even the latest release version.
+
+## CITATION.cff
+
+A `CITATION.cff` file tells GitHub — and anyone who finds your repo — exactly how to cite your work.
+
+This information is provided as a `yaml` file — GitHub renders it as a `Cite this repository` button automatically.
+
+```yaml
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Cox
+    given-names: Dezerae
+    orcid: https://orcid.org/0000-0000-0000-0000
+title: "Spacewalk Analysis"
+version: 1.0.0
+doi: 10.5072/zenodo.xxxxxx
+date-released: 2026-04-22
+```
+
+::: {.callout-tip}
+### [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/) generates a valid `CITATION.cff` in your browser — no syntax knowledge needed.
+:::
+
+## In Practice
+
+::: {.callout-caution}
+
+### Exercises
+
+4.8 Go to your Zenodo record and copy the DOI badge markdown snippet
+
+4.9 Add the badge to the top of your `README.md` — check it renders on GitHub
+
+4.10 Go to [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/), fill in the details and download the generated `CITATION.cff`
+
+4.11 Add `CITATION.cff` to your repository, commit, and push — check the `Cite this repository` button appears on GitHub
+
+:::

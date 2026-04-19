@@ -1,9 +1,9 @@
 ---
 title: "Plot2Publish"
-subtitle: "Reproducible research code for scientists"
+subtitle: "Reproducible research code"
 ---
 
-Welcome to the **Plot2Publish** workshop! Here you will find the reference material covered during the theoretical sessions. Use these pages alongside the practical exercise notebooks provided during the workshop.
+Welcome to the **Plot2Publish** workshop! Here you will find the reference material covered during the theoretical sessions. Use these pages alongside the practical exercises provided during the workshop.
 
 ---
 
@@ -11,11 +11,11 @@ Welcome to the **Plot2Publish** workshop! Here you will find the reference mater
 
 - Versioning
 - Dependencies
-- Environment management (Conda / renv)
+- Environment management
 
 ### SESSION 2: Version Control
 
-- Repositories & commits
+- Repositories
 - Local version control with Git
 - Remote version control with GitHub
 
@@ -27,5 +27,5 @@ Welcome to the **Plot2Publish** workshop! Here you will find the reference mater
 ### SESSION 4: Prepare to Publish!
 
 - Licensing
-- Releases & DOIs via Zenodo
-- Data repositories & final checklist
+- Releases & DOIs
+- Data repositories

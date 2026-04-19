@@ -85,7 +85,7 @@ tools::package_dependencies("dplyr")
 ### You can also find package dependencies on [PyPI](https://pypi.org) (Python) and [CRAN](https://cran.r-project.org) (R) — look for the *Requirements* or *Imports* section on any package page.
 :::
 
-## Exercises
+## In practice
 
 ::: {.callout-caution}
 

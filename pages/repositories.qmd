@@ -1,46 +1,66 @@
----
-title: "Repositories"
----
+# Repositories
 
 ## The problem with "final"
 
-![](images/final_versions_3.png){fig-align="center" height="350"}
+![](images/final_versions_1.png){fig-align="center"}
 
-We've all been there. Version control replaces this chaos with a systematic, reversible history of every change you make.
+![](images/final_versions_2.png){fig-align="center"}
 
-> *Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.*
->
-> — The Turing Way
+![](images/final_versions_3.png){fig-align="center"}
 
-## What is Git?
+## Enter: Version control
 
-![](images/version_control.png){fig-align="center" height="150"}
+![](images/version_control.png){fig-align="center" height="180"}
 
-**Git** is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across almost every file type, with revision history, forever.
+> Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.
 
-### Key concepts
+— *The Turing Way*
 
-::: {.columns}
+## Git: Local version control
+
+![](images/version_control.png){fig-align="center" height="180"}
+
+[**Git**]() is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across (almost) every file type, with revision history, forever.
+
+Git comes with its own list of tricky new terminology — it's like another language!
+
+## Git's guts
+
+:::: {.columns}
 ::: {.column width="33%"}
-![](images/repository.png){fig-align="center" height="200"}
+![](images/repository.png){fig-align="center" height="300"}
 
-**Repository** — a folder that Git watches, containing all the files to be tracked. It holds the full history of every change.
+::: {style="text-align:center"}
+[**Repository**]()
 :::
+
+A folder that Git watches, containing all the files to be tracked
+:::
+
 ::: {.column width="33%"}
-![](images/camera-flash.png){fig-align="center" height="200"}
+![](images/staging.png){fig-align="center" height="300"}
 
-**Commit** — a snapshot of your project at a point in time.
+::: {style="text-align:center"}
+[**Staging**]()
 :::
+
+The process of selecting which changes to include in the next snapshot
+:::
+
 ::: {.column width="33%"}
-![](images/staging.png){fig-align="center" height="200"}
+![](images/camera-flash.png){fig-align="center" height="300"}
 
-**Staging** — the process of selecting which changes to include in the next snapshot.
+::: {style="text-align:center"}
+[**Commit**]()
 :::
+
+A snapshot of your project at a point in time
 :::
+::::
 
 ## Repository structure
 
-A repository (or *repo*) is just a normal folder with a hidden `.git` subfolder — that's where Git stores the full history. A typical research repo looks like:
+A [**repository**]() (or ***repo***) is just a normal folder with a hidden `.git` subfolder inside it — that's where Git stores the full history of changes made to any files it is tracking. Often they look like:
 
 ```
 my_project/
@@ -48,12 +68,12 @@ my_project/
 │   ├── raw/          # original, untouched data — never modify!
 │   └── processed/    # cleaned, transformed data
 ├── src/              # analysis scripts
-│   ├── analysis.py
-│   └── visualisation.py
+│  ├── analysis.py
+│  └── visualisation.py
 ├── notebooks/        # exploratory analyses
-│   └── model_testing.ipynb
+│  └── model_testing.ipynb
 ├── results/          # summaries and visualisations
-│   └── report.csv
+│  └── report.csv       
 ├── environment.yml   # or renv.lock
 ├── .gitignore
 └── README.md
@@ -61,68 +81,125 @@ my_project/
 
 ## README
 
-Every repository should have a `README.md` — the quick-start guide for your project, written in Markdown.
+Every repository should have a `README` which acts as the [quick start guide]() for your project.
+
+A README is written in [markdown]() (`.md`), which is a(nother) language that adds style to plain text. It can create:
 
 ::: {.columns}
 ::: {.column width="55%"}
-Markdown adds formatting to plain text:
 
-```markdown
-# Heading
-## Subheading
+`# headings`
 
-**bold** and *italic*
+`## subheadings`
 
-- bullet list
-1. numbered list
+`**bold**` and `*italic*`
 
-[link text](https://site.com)
-```
+`- bullet lists`
+
+`1. numbered lists`
+
+`[links](https://site.com)`
+
 :::
 ::: {.column width="45%"}
-![](images/markdown.png){fig-align="center" height="250"}
+![](images/markdown.png){fig-align="left" height="300"}
 :::
 :::
 
-A good README covers:
+![](images/readme.png){fig-align="center" height="450"}
 
-- **What** the code does
+A good README should cover:
+
+- **What** this code does
 - What **dependencies** are required
 - How to **install and run** it
 - What the **inputs & outputs** are
 
-![](images/readme.png){fig-align="center" height="350"}
-
 ::: {.callout-tip}
-A comprehensive guide to Markdown syntax is available [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### You can find a more comprehensive guide to markdown syntax [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 :::
 
 ## `.gitignore`
 
 ::: {.callout-important}
-Not everything should be tracked by Git. A `.gitignore` file lists files and folders that Git will silently ignore.
+### Just because you can, doesn't mean you should... Not everything should be tracked by Git! This doesn't mean other files can't be in the same folder — just that they need to be explicitly ignored by Git.
 :::
 
-At minimum, **never** track:
+A `.gitignore` file allows us to list files and folders Git will not track. At minimum, you should [never]() use Git to track:
 
-- ❌ Raw data
-- ❌ Results that can be regenerated from code
-- ❌ Non-text files (e.g. `.Rhistory`, `.DS_Store`, Office files)
-- ❌ Credentials and API keys
+❌ **Raw data**
 
-```bash
+❌ **Results** that can be generated from code.
+
+❌ **Non-binary files** e.g. Microsoft Office files, proprietary data files, temporary or system files (e.g. `.Rhistory`, `.DS_Store`).
+
+❌ **Credentials** and API keys
+
+```{.bash}
 # Ignore all .csv files in the data directory
 data/*.csv
 
 # Ignore the entire results directory
 results/*
 
-# Ignore system files
+# Ignore specific files
 .DS_Store
 .Rhistory
+notebooks/draft_analysis.ipynb
 credentials.txt
 ```
 
 ::: {.callout-tip}
-[gitignore.io](https://www.gitignore.io) generates `.gitignore` templates for any language.
+### [gitignore.io](https://www.gitignore.io) generates `.gitignore` templates for any language.
 :::
+
+## In Practice
+
+::: {.callout-caution}
+
+### Exercises
+
+Let's return to our analysis of NASA's spacewalk data.
+
+2.1 Initialise a `git` repository within the `analysis` folder
+
+2.2 Create a `.gitignore` — which files should you exclude?
+
+:::
+
+## Quick reference
+
+<table style="width:100%; font-size:0.85em; border-collapse:collapse; margin-top:0.5em">
+  <tr>
+    <td style="font-weight:bold; padding:0.4em 0.8em; width:35%">Initialise a repo</td>
+    <td style="padding:0.4em 0.8em"><code>git init</code></td>
+  </tr>
+  <tr style="background:#f8f8f8">
+    <td style="font-weight:bold; padding:0.4em 0.8em">Check status</td>
+    <td style="padding:0.4em 0.8em"><code>git status</code></td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; padding:0.4em 0.8em">Stage changes</td>
+    <td style="padding:0.4em 0.8em"><code>git add filename</code> &nbsp;or&nbsp; <code>git add .</code></td>
+  </tr>
+  <tr style="background:#f8f8f8">
+    <td style="font-weight:bold; padding:0.4em 0.8em">Commit</td>
+    <td style="padding:0.4em 0.8em"><code>git commit -m "your message"</code></td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; padding:0.4em 0.8em">View history</td>
+    <td style="padding:0.4em 0.8em"><code>git log --oneline</code></td>
+  </tr>
+  <tr style="background:#f8f8f8">
+    <td style="font-weight:bold; padding:0.4em 0.8em">Connect to GitHub</td>
+    <td style="padding:0.4em 0.8em"><code>git remote add origin &lt;url&gt;</code></td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; padding:0.4em 0.8em">Push to GitHub</td>
+    <td style="padding:0.4em 0.8em"><code>git push</code></td>
+  </tr>
+  <tr style="background:#f8f8f8">
+    <td style="font-weight:bold; padding:0.4em 0.8em">Pull from GitHub</td>
+    <td style="padding:0.4em 0.8em"><code>git pull</code></td>
+  </tr>
+</table>

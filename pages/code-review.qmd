@@ -1,81 +1,112 @@
----
-title: "Code Review"
----
+# Code Review
 
-## Code smells
+## From plotting to publishable
 
-Research code is written to answer a question — not to be a software product. That's fine, but it often leaves behind patterns that make code hard to understand, re-run, or build upon.
+Before sharing code publicly, we need to make sure it's in good shape — not just working, but clean, clear, well-documented, and reproducible.
 
-Common code smells include:
+❓**Structure** — does the repo follow a logical layout?
 
-- **Lack of comments** — it's not clear what the code is doing or why
-- **Inconsistent style** — mixed naming conventions, indentation, or formatting
-- **Hardcoded values** — numbers or strings that should be variables or parameters
-- **Duplicate code** — the same logic repeated in multiple places instead of a function
-- **Large functions** — functions that do too much and are hard to understand
+❓**README & documentation** — is it clear what each component of the repository does and how to use it? Could a stranger run this independently?
 
-::: {.callout-tip}
-The process of identifying and fixing these issues is called **refactoring** — an important step before sharing your code more broadly.
+❓**Clean code** — is the code free from hardcoded paths, dead or commented code, debug prints, TODOs, adhoc naming, inconsistent indentation?
+
+❓**Environment file** — is there an up-to-date `environment.yml` or `renv.lock`?
+
+❓**No raw data, results or credentials** — are sensitive files in `.gitignore`, and data in a data repository?
+
+❓**Licence** — is there a `LICENSE` file with an appropriate licence?
+
+❓**Citable snapshots** — are there citable, persistent versions of the code?
+
+## Code smells: Repository
+
+Repositories that are not structured well can be difficult to navigate, understand, and reproduce. Common issues include:
+
+🔀 **Mixed functionality** — data preprocessing, analysis and visualisation all tangled in one file. Hard to read, test, or reuse
+
+🗃️ **Raw data committed to Git** — data belongs in a dedicated repository with its own DOI, not version-controlled alongside code
+
+🕵🏼‍♀️ **Cryptic structure or workflow** — lacking environment files, licences, nested folders without a documented workflow
+
+::: {.callout-important}
+### These are not just aesthetic concerns — they can make it challenging to test, maintain and share the codebase.
 :::
 
-## Reviewing code
+## Code smells: Code
 
-When reviewing code — for yourself or a collaborator — look for:
+Analysis scripts often prioritise functionality. Common issues that sneak in:
 
-🐛 **Correctness** — does it actually do what it claims? Are there silent errors?
+🗺️ **Hardcoded paths** — absolute file paths that only work on one machine
 
-🏷️ **Clarity** — could you understand this in six months without the author? Are comments being used in place of proper flow logic?
+💤 **Dead code** — functions defined but never called; lines commented out and forgotten
 
-📊 **Visualisation** — are axes labelled? Is the palette accessible? Is the default view representative?
+📦 **Unused imports** — packages loaded but never used
 
-🔁 **Reproducibility** — are there hardcoded paths, arbitrary defaults, or missing dependencies?
-
-✂️ **Scope** — is there dead code, repeated logic, or TODO stubs that were never addressed?
-
-::: {.callout-tip}
-You are reviewing the *code*, not the *person* (even when that person is past you!) — specific, constructive comments are always best.
-:::
-
-## Issues
-
-**Issues** are GitHub's built-in way to track bugs, questions, and feature requests.
-
-Every issue has:
-
-- A **title** — short and specific
-- A **description** — what is wrong, where, and what the expected behaviour is
-- An optional **label** — e.g. `bug`, `enhancement`, `good first issue`
-- An optional **assignee** — who is responsible for fixing it
+📝 **Missing documentation** — functions with no docstring, steps with no explanation
 
 ::: {.callout-note}
-Issues are not just bug reports — comments, decisions, and links to the fix all live in one place. As with commit messages, be specific!
+### Code smells are usually identified through `code reviews` or static analysis tools, and fixing code smells is called **`refactoring`**. When working collaboratively, code reviews become a shared responsibility. GitHub gives us the tools to collaborate *safely*.
 :::
 
 ## Adding collaborators
-
-A repository on GitHub is private by default. To work with others:
 
 1. Open your repository on GitHub
 2. Go to **Settings → Collaborators**
 3. Click **Add people**
 4. Search by GitHub username or email
 5. Set their role — **Write** is appropriate for most collaborators
-6. They receive an email invitation to accept
+6. They will receive an email invitation to accept
 
-::: {.callout-important}
-Anyone with write access can push directly to `main` — which is why branches and pull requests matter.
-:::
-
-## In practice
+## In Practice
 
 ::: {.callout-caution}
+
 ### Exercises
 
-3.1 Accept your GitHub collaboration invitation
+3.1 Accept your invitation to collaborate on the shared manuscript repository
 
-3.2 Using the issue list provided, create at least one GitHub issue
+3.2 Clone the manuscript repository to your machine and open it in your IDE
 
-3.3 Clone the repository and open it — what other smells can you find?
+3.3 Explore the structure — how does it differ from the bare-bones analysis folder from yesterday?
 
-3.4 Record at least one more code smell as an issue
 :::
+
+## Git(Hub)'s Guts
+
+To clean code smells collaboratively, GitHub provides three extra functions: `issues`, `branches`, and `pull requests`.
+
+:::: {.columns}
+::: {.column width="33%" .fragment fragment-index=1}
+![](images/report.png){fig-align="center" height="200"}
+
+::: {style="text-align:center"}
+[**Issue**]()
+:::
+
+A tracked record of something that needs attention — a bug, an improvement, or a question
+
+:::
+
+::: {.column width="33%" .fragment fragment-index=2}
+![](images/branch-leaves.png){fig-align="center" height="200"}
+
+::: {style="text-align:center"}
+[**Branch**]()
+:::
+
+A safe copy of the code where changes can be made without touching the in-use version
+
+:::
+
+::: {.column width="33%" .fragment fragment-index=3}
+![](images/inspect.png){fig-align="center" height="200"}
+
+::: {style="text-align:center"}
+[**Pull Request**]()
+:::
+
+A request to merge your changes into the in-use version — with a built-in review step
+
+:::
+::::
+

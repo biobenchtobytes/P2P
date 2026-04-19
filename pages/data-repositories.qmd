@@ -1,72 +1,62 @@
----
-title: "Data Repositories"
----
+# Data Repositories
 
-## Why not GitHub?
+## Last but not least: Data!
 
-GitHub is the right home for your **code** — but it is not built for **data**.
+GitHub is the right home for your code — but it is not built for data.
 
-- ❌ GitHub has a 100 MB file size limit
-- ❌ Large files bloat your repository history
-- ❌ Raw data should not be version-controlled alongside code
-- ❌ GitHub repos can be deleted — DOIs from data repositories cannot
+❌ GitHub has a 100 MB file size limit
+
+❌ Large files bloat your repository history
+
+❌ Raw data should not be version-controlled alongside code
+
+❌ GitHub repos can be deleted — DOIs from data repositories cannot
 
 ::: {.callout-note}
-Raw data belongs in a **data repository** — a permanent, citable, indexed home designed for research outputs.
+### Raw data belongs in a data repository — a permanent, citable, indexed home designed for storing and sharing research outputs.
 :::
 
 ## Discipline-specific repositories
 
 | Repository | Best for | Discipline |
 |---|---|---|
-| [PRIDE](https://www.ebi.ac.uk/pride/) | Proteomics (mass spec) | Proteomics |
-| [GEO](https://www.ncbi.nlm.nih.gov/geo/) | Gene expression data | Genomics |
-| [SRA](https://www.ncbi.nlm.nih.gov/sra/) | Raw sequencing data | Genomics |
-| [BioImage Archive](https://www.ebi.ac.uk/bioimage-archive/) | Biological imaging (microscopy, EM) | Imaging |
-| [IDR](https://idr.openmicroscopy.org) | Image data + experimental metadata | Imaging |
-| [OpenNeuro](https://openneuro.org) | Neuroimaging (MRI, EEG, MEG) | Neuroimaging |
-| [PhysioNet](https://physionet.org) | Physiological & clinical time-series | Clinical |
-| [PANGAEA](https://www.pangaea.de) | Environmental & Earth science data | Spatial |
-| [GBIF](https://www.gbif.org) | Biodiversity & occurrence data | Ecology |
+| **[PRIDE](https://www.ebi.ac.uk/pride/)** | Proteomics (mass spec) | Proteomics |
+| **[GEO](https://www.ncbi.nlm.nih.gov/geo/)** | Gene expression data | Genomics |
+| **[SRA](https://www.ncbi.nlm.nih.gov/sra/)** | Raw sequencing data | Genomics |
+| **[BioImage Archive](https://www.ebi.ac.uk/bioimage-archive/)** | Biological imaging (microscopy, EM) | Imaging |
+| **[IDR](https://idr.openmicroscopy.org)** | Image data + experimental metadata | Imaging |
+| **[TCIA](https://www.cancerimagingarchive.net)** | Clinical & pre-clinical imaging | Clinical imaging |
+| **[OpenNeuro](https://openneuro.org)** | Neuroimaging (MRI, EEG, MEG) | Neuroimaging |
+| **[PhysioNet](https://physionet.org)** | Physiological & clinical time-series | Clinical / sports science |
+| **[PANGAEA](https://www.pangaea.de)** | Environmental & Earth science spatial | Spatial / environmental |
+| **[GBIF](https://www.gbif.org)** | Biodiversity & occurrence data | Spatial / ecology |
 
 ::: {.callout-tip}
-Can't find a match? [re3data.org](https://www.re3data.org) indexes 2,000+ repositories — search by subject, data type, or country.
+### Can't find a match? [re3data.org](https://www.re3data.org) indexes 2,000+ discipline-specific repositories — search by subject, data type, or country.
 :::
 
-## General repositories
+## General options
 
-| Repository | Best for |
-|---|---|
-| [Zenodo](https://zenodo.org) | Any research output |
-| [Figshare](https://figshare.com) | Figures, datasets, code |
-| [OSF](https://osf.io) | Full projects + preprints |
+| Repository | Best for | Discipline |
+|---|---|---|
+| **[Zenodo](https://zenodo.org)** | Any research output | General |
+| **[Figshare](https://figshare.com)** | Figures, datasets, code | General |
+| **[OSF](https://osf.io)** | Full project + preprints | General |
 
 ::: {.callout-tip}
-When in doubt, **Zenodo** or **Figshare** accept almost anything — but many journals mandate a discipline-specific repository. Always check your target journal's data availability policy first.
+### When in doubt, **Zenodo** or **Figshare** accept almost anything — but many journals mandate a discipline-specific repository. Always check first.
 :::
 
-## Pre-publication checklist
-
-Before making your repository public, check off the following:
-
-- ✅ **Structure** — does it follow the standard layout?
-- ✅ **Clean code** — hardcoded paths, dead code, debug prints, TODOs, and irregular naming all removed
-- ✅ **No raw data or results** in the repo — in `.gitignore` and in a data repository
-- ✅ **README** — could a stranger clone and run your code from this alone?
-- ✅ **Environment file** — is `environment.yml` or `renv.lock` up to date?
-- ✅ **Licence** — is a `LICENSE` file present?
-- ✅ **No credentials** — API keys, passwords, and tokens all removed
-
-::: {.callout-tip}
-You do not need perfection — simply clarity. A stranger (or future you) should be able to clone, run, and understand your code independently.
-:::
-
-## In practice
+## In Practice
 
 ::: {.callout-caution}
+
 ### Exercises
 
-4.9 For each data type you work with, identify the standard or recommended repository — start with your target journal's data availability policy
+4.12 For the spacewalk manuscript, identify the raw data that should be shared and the most appropriate repository for it.
 
-4.10 Are there any data types without a discipline-specific home? Note them — **Zenodo** or **Figshare** are your fallback
+4.13 Create a draft record for this data in the repository (no need to upload files or make it public).
+
+4.14 Think about the data types you generate or work with in your own research. Identify the standard or recommended repository for each data type.
+
 :::

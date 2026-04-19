@@ -21,11 +21,12 @@ book:
     - part: "SESSION 3: Collaboration"
       chapters:
         - pages/code-review.qmd
-        - pages/branches-prs.qmd
+        - pages/issues-branches-prs.qmd
     - part: "SESSION 4: Prepare to Publish!"
       chapters:
         - pages/licensing.qmd
         - pages/releases-dois.qmd
+        - pages/razzle-dazzle.qmd
         - pages/data-repositories.qmd
     - pages/resources.qmd
   sidebar:
