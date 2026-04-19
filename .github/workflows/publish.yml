@@ -44,12 +44,15 @@ jobs:
             libjpeg-dev \
             libcurl4-openssl-dev \
             libssl-dev \
-            libxml2-dev
+            libxml2-dev \
+            libgit2-dev \
+            cmake
 
 
       - name: Install R dependencies
         run: |
-          Rscript -e "install.packages(c('knitr', 'rmarkdown', 'renv'), repos = 'https://cloud.r-project.org')"
+          Rscript -e "install.packages('pak', repos = 'https://cloud.r-project.org')"
+          Rscript -e "pak::pak(c('knitr', 'rmarkdown'))"
 
       - name: Render project
         run: quarto render
