@@ -46,4 +46,4 @@ page-footer: |
 
 bread-crumbs: true
 execute:
-  freeze: auto
+  freeze: true
