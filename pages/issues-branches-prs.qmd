@@ -1,5 +1,59 @@
 # Collaborative workflow
 
+
+## Git(Hub)'s Guts
+
+To clean code smells collaboratively, GitHub provides three extra functions: `issues`, `branches`, and `pull requests`.
+
+:::: {.columns}
+::: {.column width="30%" .fragment fragment-index=1}
+![](images/report.png){fig-align="center" height="200"}
+
+::: {style="text-align:center"}
+<h5 align="center">
+Issue
+</h5>
+
+:::
+
+A tracked record of something that needs attention — a bug, an improvement, or a question
+
+:::
+::: {.column width="3%" .fragment fragment-index=1}
+:::
+
+::: {.column width="30%" .fragment fragment-index=2}
+![](images/branch-leaves.png){fig-align="center" height="200"}
+
+::: {style="text-align:center"}
+<h5 align="center">
+Branch
+</h5>
+
+:::
+
+A safe copy of the code where changes can be made without touching the in-use version
+
+:::
+::: {.column width="3%" .fragment fragment-index=1}
+:::
+
+::: {.column width="30%" .fragment fragment-index=3}
+![](images/inspect.png){fig-align="center" height="200"}
+
+::: {style="text-align:center"}
+<h5 align="center">
+Pull Request
+</h5>
+
+:::
+
+A request to merge your changes into the in-use version — with a built-in review step
+
+:::
+::::
+
+
 ## Issues: Tools to track what needs fixing
 
 `Issues` are GitHub's built-in way to track bugs, tasks, and improvements.
