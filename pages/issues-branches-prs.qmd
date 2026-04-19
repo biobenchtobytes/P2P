@@ -23,7 +23,7 @@ A tracked record of something that needs attention — a bug, an improvement, or
 :::
 
 ::: {.column width="30%" .fragment fragment-index=2}
-![](images/branch-leaves.png){fig-align="center" height="200"}
+![](images/leaf.png){fig-align="center" height="200"}
 
 ::: {style="text-align:center"}
 <h5 align="center">
@@ -39,7 +39,7 @@ A safe copy of the code where changes can be made without touching the in-use ve
 :::
 
 ::: {.column width="30%" .fragment fragment-index=3}
-![](images/inspect.png){fig-align="center" height="200"}
+![](images/code-review.png){fig-align="center" height="200"}
 
 ::: {style="text-align:center"}
 <h5 align="center">
