@@ -1,4 +1,4 @@
-# Repositories
+# Local version control with Git
 
 ## The problem with "final"
 
@@ -166,6 +166,103 @@ Let's return to our analysis of NASA's spacewalk data.
 2.2 Create a `.gitignore` — which files should you exclude?
 
 :::
+
+## Commits
+
+Each time you want Git to take a snapshot of your project, you create a `commit`. A good commit has:
+
+1. A logical, focused set of changes — not everything all at once
+2. A short, meaningful message — what changed, and why?
+
+::: {.columns}
+::: {.column width="35%"}
+❌ *"Fix"*
+
+❌ *"change colours"*
+:::
+
+::: {.column width="65%"}
+✅ *"Fix legend label overlap in volcano plot"*
+
+✅ *"Change bar graph palette to improve contrast"*
+:::
+:::
+
+::: {.callout-important}
+### Commit messages are notes to your future self — who will not remember what *"fixed it"* means!
+:::
+
+::: {.callout-tip}
+### Commit early, commit often. Small, focused commits are far easier to understand — and to undo — than one giant commit at the end.
+:::
+
+## Bash workflow
+
+Using the terminal, navigate to your project folder and initialise Git:
+
+```bash
+cd my_project
+git init
+```
+
+Check what Git can see:
+
+```bash
+git status
+```
+
+Stage files and make your first commit:
+
+```bash
+git add filename
+git commit -m "Commit message here"
+```
+
+::: {.callout-important}
+### `git add .` stages *everything* in the folder. You can use this, but set up your `.gitignore` first — otherwise you may commit files you didn't mean to!
+:::
+
+## GUI workflow
+
+::: {.panel-tabset}
+
+### Python (VSCode)
+
+1. Open your project folder in VSCode
+2. Click the **Source Control** icon in the left sidebar (or `Ctrl+Shift+G`)
+3. Click **Initialise Repository**
+4. Your files appear with **U** (untracked) badges
+5. Hover a file and click **+** to stage it — badge changes to **A**
+6. Type a commit message in the box at the top
+7. Click **Commit** (✓)
+
+### R (RStudio)
+
+1. Open RStudio and go to **File → New Project → Existing Directory**
+2. Navigate to your project folder and click **Create Project**
+3. Go to **Tools → Project Options → Git/SVN**
+4. Change version control system to **Git** and click OK
+5. Restart RStudio when prompted — the **Git tab** appears top-right
+6. Your files appear with **?** (untracked) badges
+7. Tick the checkbox next to files to stage them — badge changes to **A**
+8. Click **Commit**, write a message, click **Commit**
+
+:::
+
+## In Practice
+
+::: {.callout-caution}
+
+### Exercises
+
+Let's return to our analysis of NASA's spacewalk data.
+
+2.3 Make your first commit with the original folder components
+
+2.4 Write a `README.md` that describes the project, then commit your changes
+
+:::
+
 
 ## Quick reference
 

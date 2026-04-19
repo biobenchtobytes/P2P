@@ -1,4 +1,4 @@
-# GitHub
+# Remote version control with GitHub
 
 ## Git vs GitHub
 
