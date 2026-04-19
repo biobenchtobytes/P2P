@@ -179,7 +179,7 @@
     "href": "pages/git.html#enter-version-control",
     "title": "Local version control with Git",
     "section": "Enter: Version control",
-    "text": "Enter: Version control\n\n\n\n\n\n\nVersion control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.\n\n— The Turing Way\nGit is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across (almost) every file type, with revision history, forever.\nGit comes with its own list of tricky new terminology — it’s like another language!\n\n\n\n\n\n\n\n\nRepository\n\nA folder that Git watches, containing all the files to be tracked\n\n\n\n\n\n\n\nStaging\n\nThe process of selecting which changes to include in the next snapshot\n\n\n\n\n\n\n\nCommit\n\nA snapshot of your project at a point in time",
+    "text": "Enter: Version control\n\n\n\n\n\n\nVersion control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed. — The Turing Way\n\nGit is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across (almost) every file type, with revision history, forever.\nGit comes with its own list of tricky new terminology — it’s like another language!\n\n\n\n\n\n\n\n\n\nRepository\n\n\nA folder that Git watches, containing all the files to be tracked\n\n\n\n\n\n\n\n\n\n\nStaging\n\n\nThe process of selecting which changes to include in the next snapshot\n\n\n\n\n\n\n\n\n\n\nCommit\n\n\nA snapshot of your project at a point in time",
     "crumbs": [
       "SESSION 2: Version Control",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
@@ -201,7 +201,7 @@
     "href": "pages/git.html#readme",
     "title": "Local version control with Git",
     "section": "README",
-    "text": "README\nEvery repository should have a README which acts as the quick start guide for your project.\nA README is written in markdown (.md), which is a(nother) language that adds style to plain text. It can create:\n\n\n# headings\n## subheadings\n**bold** and *italic*\n- bullet lists\n1. numbered lists\n[links](https://site.com)\n\n\n\n\n\n\n\n\n\n\n\n\n\nA good README should cover:\n\nWhat this code does\nWhat dependencies are required\nHow to install and run it\nWhat the inputs & outputs are\n\n\n\n\n\n\n\nTipYou can find a more comprehensive guide to markdown syntax here.",
+    "text": "README\nEvery repository should have a README which acts as the quick start guide for your project.\nA README is written in markdown (.md), which is a(nother) language that adds style to plain text. It can create:\n\n\n# headings\n## subheadings\n**bold** and *italic*\n- bullet lists\n1. numbered lists\n[links](https://site.com)\n\n\n\n\n\n\n\n\nA good README should cover:\n\nWhat this code does\nWhat dependencies are required\nHow to install and run it\nWhat the inputs & outputs are\n\n\n\n\n\n\n\nTipYou can find a more comprehensive guide to markdown syntax here.",
     "crumbs": [
       "SESSION 2: Version Control",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
