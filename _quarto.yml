@@ -47,3 +47,6 @@ page-footer: |
 bread-crumbs: true
 execute:
   freeze: true
+knitr:
+  opts_chunk:
+    python.reticulate: false
