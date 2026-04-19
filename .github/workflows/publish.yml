@@ -31,14 +31,31 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libjpeg-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev
+
+
       - name: Install R dependencies
         run: |
-          Rscript -e "options(repos = c(CRAN = 'https://cloud.r-project.org')); install.packages(c('knitr','rmarkdown'), dependencies = TRUE, Ncpus = max(1, parallel::detectCores() - 1)); stopifnot(requireNamespace('knitr', quietly = TRUE), requireNamespace('rmarkdown', quietly = TRUE))"
+          Rscript -e "install.packages(c('knitr', 'rmarkdown', 'renv'), repos = 'https://cloud.r-project.org')"
 
       - name: Render project
         run: quarto render
 
-      - name: Publish to gh-pages with explicit id
-        run: quarto publish gh-pages . --id site --no-prompt
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_book
