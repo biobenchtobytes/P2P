@@ -1,0 +1,746 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Plot2Publish",
+    "section": "",
+    "text": "Welcome to the Plot2Publish workshop! Here you will find the reference material covered during the theoretical sessions. Use these pages alongside the practical exercises provided during the workshop.\n\n\nSESSION 1: Code Context\n\nVersioning\nDependencies\nEnvironment management\n\n\n\nSESSION 2: Version Control\n\nRepositories\nLocal version control with Git\nRemote version control with GitHub\n\n\n\nSESSION 3: Collaboration\n\nCode smells & code review\nIssues, branches & pull requests\n\n\n\nSESSION 4: Prepare to Publish!\n\nLicensing\nReleases & DOIs\nData repositories",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Plot2Publish</span>"
+    ]
+  },
+  {
+    "objectID": "pages/versioning.html",
+    "href": "pages/versioning.html",
+    "title": "Versioning & Dependencies",
+    "section": "",
+    "text": "The software development life cycle",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Versioning & Dependencies</span>"
+    ]
+  },
+  {
+    "objectID": "pages/versioning.html#the-software-development-life-cycle",
+    "href": "pages/versioning.html#the-software-development-life-cycle",
+    "title": "Versioning & Dependencies",
+    "section": "",
+    "text": "Software is not static!",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Versioning & Dependencies</span>"
+    ]
+  },
+  {
+    "objectID": "pages/versioning.html#versions",
+    "href": "pages/versioning.html#versions",
+    "title": "Versioning & Dependencies",
+    "section": "Versions",
+    "text": "Versions\nEvery part of the software you use is actively maintained. New features are added, bugs are fixed, and sometimes the way a function works changes entirely.\n\n\n\n\n\n\nimport random\npopulation = {'A', 'B', 'C', 'D'}\n\n\n\nIn Python 3.10 and earlier:\n\nrandom.sample(population, 2)\n\n['B', 'A']\n\nThe same code in Python 3.11+:\n\nrandom.sample(population, 2)\n\nTraceback (most recent call last):\n  File \"&lt;string&gt;\", line 1, in &lt;module&gt;\nNameError: name 'random' is not defined\n\n\n\n\n\n\n\n\n\n\n\ndf &lt;- data.frame(\n  group = c('A', 'A', 'B', 'B'),\n  value = c(1, 2, 3, 4)\n)\n\n\n\nIn R &lt; 4.0:\n\nclass(df$group)\n\n[1] \"factor\"\n\nThe same code in R 4.0+:\n\nclass(df$group)\n\n[1] \"character\"\n\n\n\nThis is normal (and mostly great!) — but it means:\n❌ Code written in 2024 may not behave the same way in 2026\n❌ A script that worked last week may break after an update\n❌ Two researchers running the “same” code may get different results",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Versioning & Dependencies</span>"
+    ]
+  },
+  {
+    "objectID": "pages/versioning.html#dependencies-a-software-sandcastle",
+    "href": "pages/versioning.html#dependencies-a-software-sandcastle",
+    "title": "Versioning & Dependencies",
+    "section": "Dependencies: A software sandcastle",
+    "text": "Dependencies: A software sandcastle\n\n\n\n\n\n\n\n\nSource: XKCD\n\n\nWhen you write code, you are almost never starting from scratch.\nYour script depends on packages — and those packages depend on other packages.\nThe dependency chain is fragile.",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Versioning & Dependencies</span>"
+    ]
+  },
+  {
+    "objectID": "pages/versioning.html#how-do-i-know",
+    "href": "pages/versioning.html#how-do-i-know",
+    "title": "Versioning & Dependencies",
+    "section": "How do I know?",
+    "text": "How do I know?\nThere are built-in methods to check what versions of the language and packages you have installed.\n\nPythonR\n\n\n\n\nIn your script/notebook:\n# Check your Python version:\nimport sys\nprint(sys.version)\n\n# Check a package version:\nimport pandas as pd\nprint(pd.__version__)\n\nIn your terminal:\n# List all installed packages:\npip list\n\n# Package dependencies:\npip show pandas\n\n\n\n\nIn your console:\n\n\n# Check your R version:\nR.version.string\n\n# Check a package version:\npackageVersion(\"dplyr\")\n\n# List all installed packages:\ninstalled.packages()[, c(\"Package\", \"Version\")]\n\n# Package dependencies:\ntools::package_dependencies(\"dplyr\")\n\n\n\n\n\n\n\n\n\n\n\nTipYou can also find package dependencies on PyPI (Python) and CRAN (R) — look for the Requirements or Imports section on any package page.",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Versioning & Dependencies</span>"
+    ]
+  },
+  {
+    "objectID": "pages/versioning.html#in-practice",
+    "href": "pages/versioning.html#in-practice",
+    "title": "Versioning & Dependencies",
+    "section": "In practice",
+    "text": "In practice\n\n\n\n\n\n\nCautionExercises\n\n\n\nOpen your standard programming environment.\n1.1 What version of your language (Python/R) are you running?\n1.2 What version of pandas (Python) or dplyr (R) do you have installed?\n1.3 What other packages do you use for your analysis?\n1.4 Pick one package from your list — what are its dependencies?",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Versioning & Dependencies</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html",
+    "href": "pages/environments.html",
+    "title": "Environments",
+    "section": "",
+    "text": "Context for your code\nThink of your coding workspace like a house.\nJust as a blender belongs in the kitchen and not the bedroom — packages are installed per environment, not globally. And just like pots and pans need a stove, some packages depend on others to function.\nAn environment captures the exact software context your code needs to run:",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#context-for-your-code",
+    "href": "pages/environments.html#context-for-your-code",
+    "title": "Environments",
+    "section": "",
+    "text": "A specific version of Python or R\nA specific set of packages, each pinned to a specific version\nThe dependencies those packages require\n\n\n\n\n\n\n\nNoteThe environment file is like a blueprint: one file for each room, which documents exactly what is in it, the colour, size, make, model, and precise position. Anyone with the blueprint can recreate the room exactly.",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#tools",
+    "href": "pages/environments.html#tools",
+    "title": "Environments",
+    "section": "Tools",
+    "text": "Tools\nThere are a host of tools to manage environments — the right choice depends on your language and workflow.\n\n\n\n\n\n\n\n\nTool\nLanguage\nBest for\n\n\n\n\nConda\nPython (+ R)\nData science projects with many dependencies\n\n\nvenv / virtualenv\nPython\nLightweight Python-only environments\n\n\nrenv\nR\nR package dependency management\n\n\nDocker\nAny\nComplete reproducibility & isolation\n\n\n\n\n\n\n\n\n\nNoteWe will focus on Conda (Python) and renv (R) — usually the most practical choices for research workflows.",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#creating-an-environment",
+    "href": "pages/environments.html#creating-an-environment",
+    "title": "Environments",
+    "section": "Creating an environment",
+    "text": "Creating an environment\n\nPython (Conda)R (renv)\n\n\nCheck Conda is installed:\nconda --version\nCreate a new environment:\nconda create --name my_project python=3.11\nActivate it:\nconda activate my_project\n\n\nrenv works inside an RStudio project — no separate install needed.\nOpen or create an RStudio project, then initialise renv:\ninstall.packages(\"renv\")\nrenv::init()\nThis creates a project-local library and a renv.lock file to track your packages.\n\n\n\n\n\n\n\n\n\nImportantAlways activate your environment before installing packages or running code — otherwise changes go into your base environment.",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#installing-packages",
+    "href": "pages/environments.html#installing-packages",
+    "title": "Environments",
+    "section": "Installing packages",
+    "text": "Installing packages\n\nPython (Conda)R (renv)\n\n\nInstall packages into your active environment:\nconda install numpy pandas matplotlib\nOr using pip (for packages not available via conda):\npip install package-name\n\n\n\n\n\n\nNotePrefer conda install where possible — it handles dependency conflicts better than pip. Use pip only for packages unavailable on conda.\n\n\n\n\n\n\n\n\nInstall packages as normal — renv tracks them automatically:\ninstall.packages(\"ggplot2\")\ninstall.packages(\"tidyverse\")\nrenv records each install in renv.lock.\n\n\n\n\n\n\nNoteAny package installed while renv is active is automatically tracked. No extra steps needed!",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#exporting-sharing",
+    "href": "pages/environments.html#exporting-sharing",
+    "title": "Environments",
+    "section": "Exporting & sharing",
+    "text": "Exporting & sharing\n\nPython (Conda)R (renv)\n\n\nExport your environment to a file:\nconda env export &gt; environment.yml\nA collaborator can recreate it exactly:\nconda env create -f environment.yml\nFor a cleaner, more portable file — export only what you explicitly installed:\nconda env export --from-history &gt; environment.yml\n\n\nSnapshot your current package state:\nrenv::snapshot()\nA collaborator restores it with:\nrenv::restore()\n\n\n\n\n\n\n\n\n\nTipenvironment.yml or renv.lock are now as important as your code for reproducibility.",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#in-practice",
+    "href": "pages/environments.html#in-practice",
+    "title": "Environments",
+    "section": "In practice",
+    "text": "In practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n1.5 Open the analysis folder and locate the script for your preferred language (Python or R)\n1.6 Create a new environment for this project\n1.7 Install the packages required for the example script\n1.8 Export the environment file",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/environments.html#quick-reference",
+    "href": "pages/environments.html#quick-reference",
+    "title": "Environments",
+    "section": "Quick reference",
+    "text": "Quick reference\n\n\n\n\n🐍 Python (Conda)\n\n\n\n\nR (renv)\n\n\n\n\nconda create –name proj python=3.11\n\n\n\nCreate environment\n\n\n\nrenv::init()\n\n\n\n\n\n\n↓\n\n\n\n\n\n\nconda activate proj\n\n\n\nActivate environment\n\n\n\nactive within project\n\n\n\n\n\n\n↓\n\n\n\n\n\n\nconda install numpy pandas …\n\n\n\nInstall packages\n\n\n\ninstall.packages(“pkg”)\n\n\n\n\n\n\n↓\n\n\n\n\n\n\nwrite your scripts\n\n\n\nDo your work\n\n\n\nwrite your scripts\n\n\n\n\n\n\n↓\n\n\n\n\n\n\nconda env export &gt; environment.yml\n\n\n\nExport environment file\n\n\n\nrenv::snapshot()",
+    "crumbs": [
+      "SESSION 1: Code Context",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Environments</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html",
+    "href": "pages/git.html",
+    "title": "Local version control with Git",
+    "section": "",
+    "text": "The problem with “final”",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#enter-version-control",
+    "href": "pages/git.html#enter-version-control",
+    "title": "Local version control with Git",
+    "section": "Enter: Version control",
+    "text": "Enter: Version control\n\n\n\n\n\n\nVersion control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.\n\n— The Turing Way\nGit is the industry-standard version control system — think of it like tracked changes in Word, but for your entire project, across (almost) every file type, with revision history, forever.\nGit comes with its own list of tricky new terminology — it’s like another language!\n\n\n\n\n\n\n\n\nRepository\n\nA folder that Git watches, containing all the files to be tracked\n\n\n\n\n\n\n\nStaging\n\nThe process of selecting which changes to include in the next snapshot\n\n\n\n\n\n\n\nCommit\n\nA snapshot of your project at a point in time",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#repository-structure",
+    "href": "pages/git.html#repository-structure",
+    "title": "Local version control with Git",
+    "section": "Repository structure",
+    "text": "Repository structure\nA repository (or repo) is just a normal folder with a hidden .git subfolder inside it — that’s where Git stores the full history of changes made to any files it is tracking. Often they look like:\nmy_project/\n├── data/\n│   ├── raw/          # original, untouched data — never modify!\n│   └── processed/    # cleaned, transformed data\n├── src/              # analysis scripts\n│  ├── analysis.py\n│  └── visualisation.py\n├── notebooks/        # exploratory analyses\n│  └── model_testing.ipynb\n├── results/          # summaries and visualisations\n│  └── report.csv       \n├── environment.yml   # or renv.lock\n├── .gitignore\n└── README.md",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#readme",
+    "href": "pages/git.html#readme",
+    "title": "Local version control with Git",
+    "section": "README",
+    "text": "README\nEvery repository should have a README which acts as the quick start guide for your project.\nA README is written in markdown (.md), which is a(nother) language that adds style to plain text. It can create:\n\n\n# headings\n## subheadings\n**bold** and *italic*\n- bullet lists\n1. numbered lists\n[links](https://site.com)\n\n\n\n\n\n\n\n\n\n\n\n\n\nA good README should cover:\n\nWhat this code does\nWhat dependencies are required\nHow to install and run it\nWhat the inputs & outputs are\n\n\n\n\n\n\n\nTipYou can find a more comprehensive guide to markdown syntax here.",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#gitignore",
+    "href": "pages/git.html#gitignore",
+    "title": "Local version control with Git",
+    "section": ".gitignore",
+    "text": ".gitignore\n\n\n\n\n\n\nImportantJust because you can, doesn’t mean you should… Not everything should be tracked by Git! This doesn’t mean other files can’t be in the same folder — just that they need to be explicitly ignored by Git.\n\n\n\n\n\n\nA .gitignore file allows us to list files and folders Git will not track. At minimum, you should never use Git to track:\n❌ Raw data\n❌ Results that can be generated from code.\n❌ Non-binary files e.g. Microsoft Office files, proprietary data files, temporary or system files (e.g. .Rhistory, .DS_Store).\n❌ Credentials and API keys\n# Ignore all .csv files in the data directory\ndata/*.csv\n\n# Ignore the entire results directory\nresults/*\n\n# Ignore specific files\n.DS_Store\n.Rhistory\nnotebooks/draft_analysis.ipynb\ncredentials.txt\n\n\n\n\n\n\nTipgitignore.io generates .gitignore templates for any language.",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#commits",
+    "href": "pages/git.html#commits",
+    "title": "Local version control with Git",
+    "section": "Commits",
+    "text": "Commits\nEach time you want Git to take a snapshot of your project, you create a commit. A good commit has:\n\nA logical, focused set of changes — not everything all at once\nA short, meaningful message — what changed, and why?\n\n\n\n❌ “Fix”\n❌ “change colours”\n\n✅ “Fix legend label overlap in volcano plot”\n✅ “Change bar graph palette to improve contrast”\n\n\n\n\n\n\n\n\nImportantCommit messages are notes to your future self — who will not remember what “fixed it” means!\n\n\n\n\n\n\n\n\n\n\n\n\nTipCommit early, commit often. Small, focused commits are far easier to understand — and to undo — than one giant commit at the end.",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#bash-workflow",
+    "href": "pages/git.html#bash-workflow",
+    "title": "Local version control with Git",
+    "section": "Bash workflow",
+    "text": "Bash workflow\nUsing the terminal, navigate to your project folder and initialise Git:\ncd my_project\ngit init\nCheck what Git can see:\ngit status\nStage files and make your first commit:\ngit add filename\ngit commit -m \"Commit message here\"\n\n\n\n\n\n\nImportantgit add . stages everything in the folder. You can use this, but set up your .gitignore first — otherwise you may commit files you didn’t mean to!",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#gui-workflow",
+    "href": "pages/git.html#gui-workflow",
+    "title": "Local version control with Git",
+    "section": "GUI workflow",
+    "text": "GUI workflow\n\nPython (VSCode)R (RStudio)\n\n\n\nOpen your project folder in VSCode\nClick the Source Control icon in the left sidebar (or Ctrl+Shift+G)\nClick Initialise Repository\nYour files appear with U (untracked) badges\nHover a file and click + to stage it — badge changes to A\nType a commit message in the box at the top\nClick Commit (✓)\n\n\n\n\nOpen RStudio and go to File → New Project → Existing Directory\nNavigate to your project folder and click Create Project\nGo to Tools → Project Options → Git/SVN\nChange version control system to Git and click OK\nRestart RStudio when prompted — the Git tab appears top-right\nYour files appear with ? (untracked) badges\nTick the checkbox next to files to stage them — badge changes to A\nClick Commit, write a message, click Commit",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#in-practice",
+    "href": "pages/git.html#in-practice",
+    "title": "Local version control with Git",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\nLet’s return to our analysis of NASA’s spacewalk data.\n2.1 Initialise a git repository within the analysis folder\n2.2 Create a .gitignore — which files should you exclude?\n2.3 Make your first commit with the original folder components\n2.4 Write a README.md that describes the project, then commit your changes",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/git.html#quick-reference",
+    "href": "pages/git.html#quick-reference",
+    "title": "Local version control with Git",
+    "section": "Quick reference",
+    "text": "Quick reference\n\n\n\nInitialise a repo\n\n\ngit init\n\n\n\n\nCheck status\n\n\ngit status\n\n\n\n\nStage changes\n\n\ngit add filename  or  git add .\n\n\n\n\nCommit\n\n\ngit commit -m “your message”\n\n\n\n\nView history\n\n\ngit log –oneline\n\n\n\n\nConnect to GitHub\n\n\ngit remote add origin &lt;url&gt;\n\n\n\n\nPush to GitHub\n\n\ngit push\n\n\n\n\nPull from GitHub\n\n\ngit pull",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Local version control with Git</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html",
+    "href": "pages/github.html",
+    "title": "Remote version control with GitHub",
+    "section": "",
+    "text": "Git vs GitHub\nOnce you have a local repo, you need to push it to GitHub:\nAlternatively, you can use the GUI in VSCode or RStudio to publish your local repo to GitHub.",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#git-vs-github",
+    "href": "pages/github.html#git-vs-github",
+    "title": "Remote version control with GitHub",
+    "section": "",
+    "text": "NoteGit lives on your computer. GitHub is a website that talks to Git. They work together — but they are not the same thing.\n\n\n\n\n\n\n\n\nGit\n\nRuns on your machine\nTracks changes to files\nWorks entirely offline\nThe version control engine\n\n\nGitHub\n\nA website (cloud hosting)\nStores a copy of your repo online\nEnables sharing, collaboration, and backup\nThe version control destination\n\n\n\n\n\n\n\n\n\nImportantYou can use Git without GitHub — but you can’t use GitHub without Git.\n\n\n\n\n\n\n\n\nCreate a new empty repository on GitHub (no README, no .gitignore)\nConnect your local repo to GitHub:\n\ngit remote add origin https://github.com/username/repo-name.git\ngit branch -M main\ngit push -u origin main\n\n\n\n\n\n\nNoteYou only run git remote add once. After that, git push and git pull know where to go.\n\n\n\n\n\n\n\n\nPython (VSCode)R (RStudio)\n\n\n\nOpen the Source Control tab (Ctrl+Shift+G)\nClick Publish Branch (appears after your first commit)\nSign in to GitHub if prompted\nChoose Public or Private\nVSCode creates the repo on GitHub and pushes automatically\nFuture commits: click Sync Changes (↑↓) to push\n\n\n\n\nIn the console, run usethis::use_github()\nChoose Public or Private when prompted\nRStudio creates the repo on GitHub and pushes automatically\nFuture commits: click the Push button (↑) in the Git tab",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#in-practice",
+    "href": "pages/github.html#in-practice",
+    "title": "Remote version control with GitHub",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n2.5 Publish your local spacewalk_analysis repository to GitHub\n2.6 Visualise the repository on GitHub — explore the commit history, README, and file structure\n2.7 Update one of the files in the repository on your local machine, then push the change to GitHub",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#creating-repositories",
+    "href": "pages/github.html#creating-repositories",
+    "title": "Remote version control with GitHub",
+    "section": "Creating repositories",
+    "text": "Creating repositories\nWe can also create repositories directly on GitHub in two ways:\n\n\nCreate from scratch\n\nClick New repository on GitHub\nEnter a repository name and visibility\nOptionally add a README, .gitignore, and license\nClick Create repository\n\n\nCreate from a template\n\nOpen a template repository\nClick Use this template\nChoose owner, name, and visibility\nClick Create repository from template\n\n\n\n\n\n\n\n\n\nNoteIf you already have a local Git project, create an empty GitHub repository (no README or .gitignore) to avoid conflicts on first push.",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#cloning",
+    "href": "pages/github.html#cloning",
+    "title": "Remote version control with GitHub",
+    "section": "Cloning",
+    "text": "Cloning\nTo use a repository created on GitHub, you need to clone it to your local machine.\nCloning is the opposite of publishing: instead of sending your work from your machine to GitHub, you copy a repository from GitHub onto your local machine.\nYou might clone a repository:\n\nWhen starting a new project from an existing template\nTo get a copy of someone else’s code\nTo work or collaborate on a different machine\n\nFrom the terminal, clone a repository with:\ngit clone https://github.com/username/repo-name.git\ncd repo-name\n\n\n\n\n\n\nNotegit clone downloads the files, full commit history, and Git setup.\n\n\n\n\n\n\n\nPython (VSCode)R (RStudio)From GitHub\n\n\n\nOpen the Command Palette (Ctrl+Shift+P)\nRun Git: Clone\nPaste the GitHub repository URL\nChoose where to save it on your machine\nClick Open when VSCode asks whether to open the cloned repository\n\n\n\n\nGo to File → New Project\nChoose Version Control then Git\nPaste the GitHub repository URL\nChoose where to save the project locally\nClick Create Project to open the cloned repository in RStudio\n\n\n\n\nOpen the repository page on GitHub\nClick the green Code button\nClick Open with GitHub Desktop\nChoose where to save the repository locally\nClick Clone to download and open the repository\n\n\n\n\n\n\n\n\n\n\nTipIf the repository is private, you will need to sign in to GitHub before you can clone it.",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#in-practice-1",
+    "href": "pages/github.html#in-practice-1",
+    "title": "Remote version control with GitHub",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n2.8 Create a new repository on GitHub named your-username\n2.9 Clone the repository to your computer, then open in your preferred IDE",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#your-github-homepage",
+    "href": "pages/github.html#your-github-homepage",
+    "title": "Remote version control with GitHub",
+    "section": "Your GitHub homepage",
+    "text": "Your GitHub homepage\nGitHub has a special trick: a repository named exactly the same as your username becomes your public profile page.\nThis is a neat, low-effort way to:\n\nIntroduce yourself and your research\nShowcase projects and skills\nLink to publications, datasets, or your lab website\n\n\n\n\n\n\n\nTipDon’t worry about complexity — start with a few lines and links!",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/github.html#in-practice-2",
+    "href": "pages/github.html#in-practice-2",
+    "title": "Remote version control with GitHub",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n2.10 Browse awesome-readme for inspiration\n2.11 Write your README.md — don’t forget to commit along the way!\n2.12 Once complete, push your changes back to GitHub",
+    "crumbs": [
+      "SESSION 2: Version Control",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Remote version control with GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "pages/code-review.html",
+    "href": "pages/code-review.html",
+    "title": "Code Review",
+    "section": "",
+    "text": "From plotting to publishable\nBefore sharing code publicly, we need to make sure it’s in good shape — not just working, but clean, clear, well-documented, and reproducible.\n❓Structure — does the repo follow a logical layout?\n❓README & documentation — is it clear what each component of the repository does and how to use it? Could a stranger run this independently?\n❓Clean code — is the code free from hardcoded paths, dead or commented code, debug prints, TODOs, adhoc naming, inconsistent indentation?\n❓Environment file — is there an up-to-date environment.yml or renv.lock?\n❓No raw data, results or credentials — are sensitive files in .gitignore, and data in a data repository?\n❓Licence — is there a LICENSE file with an appropriate licence?\n❓Citable snapshots — are there citable, persistent versions of the code?",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Code Review</span>"
+    ]
+  },
+  {
+    "objectID": "pages/code-review.html#code-smells-repository",
+    "href": "pages/code-review.html#code-smells-repository",
+    "title": "Code Review",
+    "section": "Code smells: Repository",
+    "text": "Code smells: Repository\nRepositories that are not structured well can be difficult to navigate, understand, and reproduce. Common issues include:\n🔀 Mixed functionality — data preprocessing, analysis and visualisation all tangled in one file. Hard to read, test, or reuse\n🗃️ Raw data committed to Git — data belongs in a dedicated repository with its own DOI, not version-controlled alongside code\n🕵🏼‍♀️ Cryptic structure or workflow — lacking environment files, licences, nested folders without a documented workflow\n\n\n\n\n\n\nImportantThese are not just aesthetic concerns — they can make it challenging to test, maintain and share the codebase.",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Code Review</span>"
+    ]
+  },
+  {
+    "objectID": "pages/code-review.html#code-smells-code",
+    "href": "pages/code-review.html#code-smells-code",
+    "title": "Code Review",
+    "section": "Code smells: Code",
+    "text": "Code smells: Code\nAnalysis scripts often prioritise functionality. Common issues that sneak in:\n🗺️ Hardcoded paths — absolute file paths that only work on one machine\n💤 Dead code — functions defined but never called; lines commented out and forgotten\n📦 Unused imports — packages loaded but never used\n📝 Missing documentation — functions with no docstring, steps with no explanation\n\n\n\n\n\n\nNoteCode smells are usually identified through code reviews or static analysis tools, and fixing code smells is called refactoring. When working collaboratively, code reviews become a shared responsibility. GitHub gives us the tools to collaborate safely.",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Code Review</span>"
+    ]
+  },
+  {
+    "objectID": "pages/code-review.html#adding-collaborators",
+    "href": "pages/code-review.html#adding-collaborators",
+    "title": "Code Review",
+    "section": "Adding collaborators",
+    "text": "Adding collaborators\n\nOpen your repository on GitHub\nGo to Settings → Collaborators\nClick Add people\nSearch by GitHub username or email\nSet their role — Write is appropriate for most collaborators\nThey will receive an email invitation to accept",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Code Review</span>"
+    ]
+  },
+  {
+    "objectID": "pages/code-review.html#in-practice",
+    "href": "pages/code-review.html#in-practice",
+    "title": "Code Review",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n3.1 Accept your invitation to collaborate on the shared manuscript repository\n3.2 Clone the manuscript repository to your machine and open it in your IDE\n3.3 Explore the structure — how does it differ from the bare-bones analysis folder from yesterday?",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Code Review</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html",
+    "href": "pages/issues-branches-prs.html",
+    "title": "Collaborative workflow",
+    "section": "",
+    "text": "Git(Hub)’s Guts\nTo clean code smells collaboratively, GitHub provides three extra functions: issues, branches, and pull requests.",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#githubs-guts",
+    "href": "pages/issues-branches-prs.html#githubs-guts",
+    "title": "Collaborative workflow",
+    "section": "",
+    "text": "Issue\n\n\nA tracked record of something that needs attention — a bug, an improvement, or a question\n\n\n\n\n\n\n\n\n\n\nBranch\n\n\nA safe copy of the code where changes can be made without touching the in-use version\n\n\n\n\n\n\n\n\n\n\nPull Request\n\n\nA request to merge your changes into the in-use version — with a built-in review step",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#issues-tools-to-track-what-needs-fixing",
+    "href": "pages/issues-branches-prs.html#issues-tools-to-track-what-needs-fixing",
+    "title": "Collaborative workflow",
+    "section": "Issues: Tools to track what needs fixing",
+    "text": "Issues: Tools to track what needs fixing\nIssues are GitHub’s built-in way to track bugs, tasks, and improvements.\nEvery issue has:\n\nA title — short and specific\nA description — what is wrong, where, and what the expected behaviour is\nAn (optional) label — e.g. bug, enhancement, good first issue\nAn (optional) assignee — who is responsible for fixing it\n\n\n\n\n\n\n\nTipRemember: you are reviewing the code, not the person (even when that person is past you!). Be specific and constructive.",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#in-practice",
+    "href": "pages/issues-branches-prs.html#in-practice",
+    "title": "Collaborative workflow",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\nA senior team member has reviewed the repository and flagged some issues.\n3.4 Using the provided ISSUES.md, create at least one GitHub issue in the manuscript repository — include a label, title and description\n3.5 Review the repository yourself — can you spot anything else?\n3.6 Record one additional code smell as a new issue",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#branches-main-and-many-more",
+    "href": "pages/issues-branches-prs.html#branches-main-and-many-more",
+    "title": "Collaborative workflow",
+    "section": "Branches: main and many more",
+    "text": "Branches: main and many more\n\n\n\n\n\n\nNoteA branch is a copy of the codebase where you can make changes without affecting the in-use version.\n\n\n\n\n\n\nSo far, everyone has been working directly on the main branch — the default live version of the code.\nWith collaborators, unprotected main means:\n❌ Two people editing the same file at the same time creates conflicts\n❌ Half-finished changes breaking things for everyone\n❌ No way to review work before it goes live",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#branches-the-workflow",
+    "href": "pages/issues-branches-prs.html#branches-the-workflow",
+    "title": "Collaborative workflow",
+    "section": "Branches: The workflow",
+    "text": "Branches: The workflow\n\nPython (VSCode)R (RStudio)\n\n\n\nOpen the Source Control tab (Ctrl+Shift+G)\nClick the branch name in the bottom-left status bar\nSelect Create new branch — name it fix/issue-number-short-description\nMake your changes and commit as normal\nClick Publish Branch in the Source Control tab\n\n\n\n\nIn the Git tab (top-right), click the branch icon 🔀\nClick New Branch — name it fix/issue-number-short-description\nMake your changes and commit as normal (stage → message → Commit)\nClick Push (↑) to push your branch to GitHub\n\n\n\n\n\n\n\n\n\n\nTipBranch names should be short and descriptive: fix/3-axis-labels or fix/5-hardcoded-path. The issue number makes it easy to trace back.",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#in-practice-1",
+    "href": "pages/issues-branches-prs.html#in-practice-1",
+    "title": "Collaborative workflow",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n3.7 On GitHub, assign yourself to one of the open issues\n3.8 In your IDE, create a new branch for your fix — name it fix/&lt;issue-number&gt;-short-description\n3.9 Make your changes, commit with a clear message, and push the branch to GitHub",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#pull-requests-the-review-loop",
+    "href": "pages/issues-branches-prs.html#pull-requests-the-review-loop",
+    "title": "Collaborative workflow",
+    "section": "Pull Requests: The review loop",
+    "text": "Pull Requests: The review loop\nWhen your branch is ready, you open a pull request (PR) — a request to merge your changes into main. A PR lets your teammates:\n\nSee exactly what changed, line by line\nLeave comments on specific lines\nApprove the changes — or ask for revisions\nMerge once everyone is happy",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#pull-requests-workflow",
+    "href": "pages/issues-branches-prs.html#pull-requests-workflow",
+    "title": "Collaborative workflow",
+    "section": "Pull Requests: Workflow",
+    "text": "Pull Requests: Workflow\n\nOpening a PRAssigning a reviewerReviewing a PRManaging conflicts\n\n\n\nAfter pushing your branch, go to the repository on GitHub\nGitHub will show a banner: Compare & pull request — click it\nAdd a descriptive title\nIn the description, link to the issue by typing # followed by the issue number\nAssign a teammate as reviewer\nClick Create pull request\n\n\n\n\nGo to the Pull requests tab\nClick the PR you want to be reviewed\nOn the right sidebar, click Reviewers → select a teammate (or yourself)\n\n\n\n\nOpen the repository on GitHub to the Pull requests tab\nOpen the PR you have been assigned to review\nClick Files changed to see the diff — green lines are additions, red are deletions\nClick the + next to any line to leave an inline comment\nWhen done, click Review changes → choose:\n\n✅ Approve — looks good, ready to merge\n💬 Comment — feedback, but no verdict yet\n❌ Request changes — needs fixes before merging\n\nOnce ready → click Merge pull request\n\n\n\n\nIf there are merge conflicts, GitHub will prevent merging and show which files are affected\nThe author of the PR (or anyone with write access) can resolve conflicts by:\n\nClicking Resolve conflicts on GitHub and editing the file in the browser,\n\nOR\n\nPulling the branch locally, fixing the conflicts in an IDE, committing, and pushing the resolved version back to GitHub\n\nOnce conflicts are resolved, the PR can be merged as normal",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#in-practice-2",
+    "href": "pages/issues-branches-prs.html#in-practice-2",
+    "title": "Collaborative workflow",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n3.10 Via GitHub, open a pull request for your branch — link it to the issue and assign a teammate as reviewer\n3.11 Review a teammate’s PR — read the diff carefully, leave at least one comment, then approve\n3.12 Once your own PR is approved, merge it — then watch the manuscript update live!",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/issues-branches-prs.html#quick-reference",
+    "href": "pages/issues-branches-prs.html#quick-reference",
+    "title": "Collaborative workflow",
+    "section": "Quick reference",
+    "text": "Quick reference\n\n\n\nAdd a collaborator\n\n\nSettings → Collaborators → Add people\n\n\n\n\nCreate an issue\n\n\nIssues tab → New issue → add label + assignee\n\n\n\n\nCreate a branch (VSCode)\n\n\nClick branch name in status bar → New branch\n\n\n\n\nCreate a branch (RStudio)\n\n\nGitHub → Branches → New Branch\n\n\n\n\nPush a branch\n\n\nVSCode: Publish Branch  |  RStudio: Push (↑)\n\n\n\n\nOpen a pull request\n\n\nPush branch → GitHub banner → Compare & pull request\n\n\n\n\nLink PR to an issue\n\n\nType #issue-number in the PR description\n\n\n\n\nReview a PR\n\n\nPull requests tab → Files changed → Review changes\n\n\n\n\nMerge a PR\n\n\nApprove → Merge pull request → Confirm",
+    "crumbs": [
+      "SESSION 3: Collaboration",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Collaborative workflow</span>"
+    ]
+  },
+  {
+    "objectID": "pages/licensing.html",
+    "href": "pages/licensing.html",
+    "title": "Licensing",
+    "section": "",
+    "text": "Why it matters\nA license is just a text file — LICENSE — in the root of your repository. It tells anyone who finds your code exactly what they are and are not allowed to do with it.\nThe right choice depends on what you want to allow:",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Licensing</span>"
+    ]
+  },
+  {
+    "objectID": "pages/licensing.html#why-it-matters",
+    "href": "pages/licensing.html#why-it-matters",
+    "title": "Licensing",
+    "section": "",
+    "text": "ImportantCode without a license is legally unusable. Without a license, nobody can reuse, modify, or distribute your work, even if it is publicly visible.\n\n\n\n\n\n\n\n\n\nCan people use it in commercial software?\nDo derivative works need to share the same license?\nDo they need to credit you?\n\n\n\n\n\n\n\nTipData and documentation can (and should) be licensed too! Often, MIT is used for code + CC BY 4.0 for data.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Licensing</span>"
+    ]
+  },
+  {
+    "objectID": "pages/licensing.html#in-practice",
+    "href": "pages/licensing.html#in-practice",
+    "title": "Licensing",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\nLet’s add a license to your manuscript repository.\n4.1 Create a fork of the manuscript repository, then open it on GitHub\n4.2 Use choosealicense.com to select a suitable license\n4.3 Using the web interface, add a LICENSE file containing the relevant license text and commit",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Licensing</span>"
+    ]
+  },
+  {
+    "objectID": "pages/releases-dois.html",
+    "href": "pages/releases-dois.html",
+    "title": "Releases & DOIs",
+    "section": "",
+    "text": "GitHub Releases: A snapshot for publication\nSo far, Git has tracked every change you have made — but it will continue to do so even after publication! A paper needs to cite a specific, stable version earmarked on GitHub via a release.\nReleases use semantic versioning: v MAJOR . MINOR . PATCH\nDOIs are generated via a process called minting — a release becomes a permanent, citable version of your code when a DOI is minted, which is accompanied by a persistent archive of the codebase.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Releases & DOIs</span>"
+    ]
+  },
+  {
+    "objectID": "pages/releases-dois.html#github-releases-a-snapshot-for-publication",
+    "href": "pages/releases-dois.html#github-releases-a-snapshot-for-publication",
+    "title": "Releases & DOIs",
+    "section": "",
+    "text": "NoteA GitHub release is a named snapshot of your repository at a point in time — typically tied to a paper submission or publication.\n\n\n\n\n\n\n\n\n\nv1.0.0 — first stable, publication-ready version\nv1.1.0 — new features added after publication\nv1.0.1 — bug fix, no new features\n\n\n\n\n\n\n\nTipFor most research code, v1.0.0 may be the only release you make!\n\n\n\n\n\n\n\n\n\n\n\n\nImportantA GitHub release is a stable snapshot — but it is not permanent. It can be deleted, renamed, or changed. It does not have a DOI, so it can (should) not be cited in a paper.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Releases & DOIs</span>"
+    ]
+  },
+  {
+    "objectID": "pages/releases-dois.html#zenodo-making-your-code-citable",
+    "href": "pages/releases-dois.html#zenodo-making-your-code-citable",
+    "title": "Releases & DOIs",
+    "section": "Zenodo: Making your code citable",
+    "text": "Zenodo: Making your code citable\n\n\nZenodo is an open research repository hosted by CERN. It will:\n\nArchive a permanent copy of your code\nIssue a DOI that can be cited\nIndex your work so others can find it more readily\nTrack metrics like views and citations",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Releases & DOIs</span>"
+    ]
+  },
+  {
+    "objectID": "pages/releases-dois.html#github-zenodo-workflow",
+    "href": "pages/releases-dois.html#github-zenodo-workflow",
+    "title": "Releases & DOIs",
+    "section": "GitHub & Zenodo: Workflow",
+    "text": "GitHub & Zenodo: Workflow\n\nGo to zenodo.org and sign in\nNavigate to your account → GitHub\nFind your repository in the list and toggle it on\nGo to your repository on GitHub and create a new Release (tag: v1.0.0)\nReturn to Zenodo — your DOI will appear within a few minutes\n\n\n\n\n\n\n\nTipToday we will use sandbox.zenodo.org — a practice environment that issues test DOIs. It requires a separate account from zenodo.org. The experience is identical, however the DOIs are not permanent.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Releases & DOIs</span>"
+    ]
+  },
+  {
+    "objectID": "pages/releases-dois.html#in-practice",
+    "href": "pages/releases-dois.html#in-practice",
+    "title": "Releases & DOIs",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n4.4 Change the visibility to public (Settings → General → Change repository visibility)\n4.5 Link your GitHub account to zenodo and enable tracking of your repository\n4.6 Create a v1.0.0 release — then watch Zenodo mint your DOI",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Releases & DOIs</span>"
+    ]
+  },
+  {
+    "objectID": "pages/razzle-dazzle.html",
+    "href": "pages/razzle-dazzle.html",
+    "title": "README razzle-dazzle",
+    "section": "",
+    "text": "Badges\nBadges are a visual way to communicate important information about your project at a glance:\nZenodo provides a DOI badge for your release — simply copy the markdown snippet and paste it into the README.md.\nOther badges can be generated from services like shields.io — e.g. to show your license, build status, or even the latest release version.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>README razzle-dazzle</span>"
+    ]
+  },
+  {
+    "objectID": "pages/razzle-dazzle.html#citation.cff",
+    "href": "pages/razzle-dazzle.html#citation.cff",
+    "title": "README razzle-dazzle",
+    "section": "CITATION.cff",
+    "text": "CITATION.cff\nA CITATION.cff file tells GitHub — and anyone who finds your repo — exactly how to cite your work.\nThis information is provided as a yaml file — GitHub renders it as a Cite this repository button automatically.\ncff-version: 1.2.0\nmessage: \"If you use this software, please cite it as below.\"\nauthors:\n  - family-names: Cox\n    given-names: Dezerae\n    orcid: https://orcid.org/0000-0000-0000-0000\ntitle: \"Spacewalk Analysis\"\nversion: 1.0.0\ndoi: 10.5072/zenodo.xxxxxx\ndate-released: 2026-04-22\n\n\n\n\n\n\nTipcffinit generates a valid CITATION.cff in your browser — no syntax knowledge needed.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>README razzle-dazzle</span>"
+    ]
+  },
+  {
+    "objectID": "pages/razzle-dazzle.html#in-practice",
+    "href": "pages/razzle-dazzle.html#in-practice",
+    "title": "README razzle-dazzle",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n4.8 Go to your Zenodo record and copy the DOI badge markdown snippet\n4.9 Add the badge to the top of your README.md — check it renders on GitHub\n4.10 Go to cffinit, fill in the details and download the generated CITATION.cff\n4.11 Add CITATION.cff to your repository, commit, and push — check the Cite this repository button appears on GitHub",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>README razzle-dazzle</span>"
+    ]
+  },
+  {
+    "objectID": "pages/data-repositories.html",
+    "href": "pages/data-repositories.html",
+    "title": "Data Repositories",
+    "section": "",
+    "text": "Last but not least: Data!\nGitHub is the right home for your code — but it is not built for data.\n❌ GitHub has a 100 MB file size limit\n❌ Large files bloat your repository history\n❌ Raw data should not be version-controlled alongside code\n❌ GitHub repos can be deleted — DOIs from data repositories cannot",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "pages/data-repositories.html#last-but-not-least-data",
+    "href": "pages/data-repositories.html#last-but-not-least-data",
+    "title": "Data Repositories",
+    "section": "",
+    "text": "NoteRaw data belongs in a data repository — a permanent, citable, indexed home designed for storing and sharing research outputs.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "pages/data-repositories.html#discipline-specific-repositories",
+    "href": "pages/data-repositories.html#discipline-specific-repositories",
+    "title": "Data Repositories",
+    "section": "Discipline-specific repositories",
+    "text": "Discipline-specific repositories\n\n\n\nRepository\nBest for\nDiscipline\n\n\n\n\nPRIDE\nProteomics (mass spec)\nProteomics\n\n\nGEO\nGene expression data\nGenomics\n\n\nSRA\nRaw sequencing data\nGenomics\n\n\nBioImage Archive\nBiological imaging (microscopy, EM)\nImaging\n\n\nIDR\nImage data + experimental metadata\nImaging\n\n\nTCIA\nClinical & pre-clinical imaging\nClinical imaging\n\n\nOpenNeuro\nNeuroimaging (MRI, EEG, MEG)\nNeuroimaging\n\n\nPhysioNet\nPhysiological & clinical time-series\nClinical / sports science\n\n\nPANGAEA\nEnvironmental & Earth science spatial\nSpatial / environmental\n\n\nGBIF\nBiodiversity & occurrence data\nSpatial / ecology\n\n\n\n\n\n\n\n\n\nTipCan’t find a match? re3data.org indexes 2,000+ discipline-specific repositories — search by subject, data type, or country.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "pages/data-repositories.html#general-options",
+    "href": "pages/data-repositories.html#general-options",
+    "title": "Data Repositories",
+    "section": "General options",
+    "text": "General options\n\n\n\nRepository\nBest for\nDiscipline\n\n\n\n\nZenodo\nAny research output\nGeneral\n\n\nFigshare\nFigures, datasets, code\nGeneral\n\n\nOSF\nFull project + preprints\nGeneral\n\n\n\n\n\n\n\n\n\nTipWhen in doubt, Zenodo or Figshare accept almost anything — but many journals mandate a discipline-specific repository. Always check first.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "pages/data-repositories.html#in-practice",
+    "href": "pages/data-repositories.html#in-practice",
+    "title": "Data Repositories",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\n\n\n\nCautionExercises\n\n\n\n4.12 For the spacewalk manuscript, identify the raw data that should be shared and the most appropriate repository for it.\n4.13 Create a draft record for this data in the repository (no need to upload files or make it public).\n4.14 Think about the data types you generate or work with in your own research. Identify the standard or recommended repository for each data type.",
+    "crumbs": [
+      "SESSION 4: Prepare to Publish!",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Data Repositories</span>"
+    ]
+  },
+  {
+    "objectID": "pages/resources.html",
+    "href": "pages/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Tools & platforms",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  },
+  {
+    "objectID": "pages/resources.html#tools-platforms",
+    "href": "pages/resources.html#tools-platforms",
+    "title": "Resources",
+    "section": "",
+    "text": "re3data.org — registry of 2,000+ research data repositories, searchable by subject and data type\nchoosealicense.com — plain-English guide to choosing an open source licence\ngitignore.io — generate .gitignore templates for any language or IDE\ncffinit — browser-based CITATION.cff generator\nshields.io — generate badges for licences, DOIs, build status, and more\nQuarto Manuscripts — publish code and data integrated into manuscripts\nCode Ocean — platform for executable, citable code capsules\nSnakemake — automate reproducible analysis workflows\nGitHub templates — create standardised repo structures for new projects",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  },
+  {
+    "objectID": "pages/resources.html#reading-learning",
+    "href": "pages/resources.html#reading-learning",
+    "title": "Resources",
+    "section": "Reading & learning",
+    "text": "Reading & learning\n\nFAIR principles — Findable, Accessible, Interoperable, Reusable — the framework underpinning open science\nThe Turing Way — comprehensive, community-built handbook for reproducible research\nSoftware Carpentry: Better Research Software — hands-on workshop for research computing\nData Carpentry: Data Management — workshop on managing and sharing research data\nReproducibiliTea — journal club and community for open and reproducible research",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  }
+]
