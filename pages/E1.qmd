@@ -1,5 +1,5 @@
 ---
-title: "Exercises"
+title: "Code Context"
 ---
 
 Step-by-step guidance for each exercise. The original exercise prompt is shown as the title — click to expand for detailed instructions.
