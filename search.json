@@ -714,33 +714,58 @@
     ]
   },
   {
+    "objectID": "pages/checklist.html",
+    "href": "pages/checklist.html",
+    "title": "Publishing Checklist",
+    "section": "",
+    "text": "From plotting to publishable\n  \n    Progress0 / 22\n    \n  \n  \n  Everything ticked — ready to publish!\n  Reset",
+    "crumbs": [
+      "Resources",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Publishing Checklist</span>"
+    ]
+  },
+  {
     "objectID": "pages/resources.html",
     "href": "pages/resources.html",
-    "title": "Resources",
+    "title": "Tools & Templates",
     "section": "",
-    "text": "Tools & platforms",
+    "text": "Tools",
     "crumbs": [
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resources</span>"
+      "Resources",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tools & Templates</span>"
     ]
   },
   {
-    "objectID": "pages/resources.html#tools-platforms",
-    "href": "pages/resources.html#tools-platforms",
-    "title": "Resources",
+    "objectID": "pages/resources.html#tools",
+    "href": "pages/resources.html#tools",
+    "title": "Tools & Templates",
     "section": "",
-    "text": "re3data.org — registry of 2,000+ research data repositories, searchable by subject and data type\nchoosealicense.com — plain-English guide to choosing an open source licence\ngitignore.io — generate .gitignore templates for any language or IDE\ncffinit — browser-based CITATION.cff generator\nshields.io — generate badges for licences, DOIs, build status, and more\nQuarto Manuscripts — publish code and data integrated into manuscripts\nCode Ocean — platform for executable, citable code capsules\nSnakemake — automate reproducible analysis workflows\nGitHub templates — create standardised repo structures for new projects",
+    "text": "re3data.org — registry of 2,000+ research data repositories, searchable by subject and data type\nchoosealicense.com — plain-English guide to choosing an open source licence\ngitignore.io — generate .gitignore templates for any language or IDE\ncffinit — browser-based CITATION.cff generator\nshields.io — generate badges for licences, DOIs, build status, and more\nCode Ocean — platform for executable, citable code capsules\nZenodo — archive code and data with DOI minting\nQuarto Manuscripts — publish code and data integrated into manuscripts\nSnakemake — automate reproducible analysis workflows\nGitHub Pull Requests Plugin — manage GitHub PRs from VS Code",
     "crumbs": [
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resources</span>"
+      "Resources",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tools & Templates</span>"
     ]
   },
   {
-    "objectID": "pages/resources.html#reading-learning",
-    "href": "pages/resources.html#reading-learning",
-    "title": "Resources",
-    "section": "Reading & learning",
-    "text": "Reading & learning\n\nFAIR principles — Findable, Accessible, Interoperable, Reusable — the framework underpinning open science\nThe Turing Way — comprehensive, community-built handbook for reproducible research\nSoftware Carpentry: Better Research Software — hands-on workshop for research computing\nData Carpentry: Data Management — workshop on managing and sharing research data\nReproducibiliTea — journal club and community for open and reproducible research",
+    "objectID": "pages/resources.html#templates",
+    "href": "pages/resources.html#templates",
+    "title": "Tools & Templates",
+    "section": "Templates",
+    "text": "Templates\n\nGitHub templates — create standardised repo structures for new projects\nExperiment Template\nAnalysis Template\nManuscript Writing Template\nPublic Manuscript Template",
     "crumbs": [
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Resources</span>"
+      "Resources",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Tools & Templates</span>"
+    ]
+  },
+  {
+    "objectID": "pages/learning.html",
+    "href": "pages/learning.html",
+    "title": "Further Learning",
+    "section": "",
+    "text": "FAIR principles — Findable, Accessible, Interoperable, Reusable — the framework underpinning open science\nThe Turing Way — comprehensive, community-built handbook for reproducible research\nSoftware Carpentry: Better Research Software — hands-on workshop for research computing\nData Carpentry: Data Management — workshop on managing and sharing research data\nReproducibiliTea — journal club and community for open and reproducible research",
+    "crumbs": [
+      "Resources",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Further Learning</span>"
     ]
   }
 ]
