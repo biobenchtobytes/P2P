@@ -6,8 +6,6 @@ Step-by-step guidance for each exercise. The original exercise prompt is shown a
 
 ---
 
-## Session 3: Collaboration
-
 ### Getting started
 
 ::: {.callout-caution collapse="true"}

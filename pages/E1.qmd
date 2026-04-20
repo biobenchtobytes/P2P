@@ -6,8 +6,6 @@ Step-by-step guidance for each exercise. The original exercise prompt is shown a
 
 ---
 
-## Session 1: Code context
-
 ### Versioning & Dependencies
 
 ::: {.callout-caution collapse="true"}

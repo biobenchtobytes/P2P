@@ -6,8 +6,6 @@ Step-by-step guidance for each exercise. The original exercise prompt is shown a
 
 ---
 
-## Session 2: Version control
-
 ### Local version control
 
 ::: {.callout-caution collapse="true"}
