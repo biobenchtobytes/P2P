@@ -1,0 +1,215 @@
+---
+title: "Exercises"
+---
+
+Step-by-step guidance for each exercise. The original exercise prompt is shown as the title — click to expand for detailed instructions.
+
+---
+
+## Session 4: Prepare to publish!
+
+### Licensing
+
+::: {.callout-caution collapse="true"}
+### 4.1 Create a fork of the manuscript repository, then open it on GitHub
+
+A `fork` is your own personal copy of someone else's repository — changes you make won't affect the original until you open a pull request. 
+
+
+::: {.callout-note}
+### We are using this workflow so everyone has a chance to practice the publishing steps, but usually you would publish directly to from original repository.
+:::
+
+1. Open the manuscript repository on GitHub
+2. Click `Fork` (top right) → `Create fork`
+3. GitHub creates a copy under your account (e.g. `your-username/manuscript-repo`)
+4. Open your fork on GitHub — note the "forked from..." link under the repo name
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.2 Use choosealicense.com to select a suitable license
+
+Go to [choosealicense.com](https://choosealicense.com) and browse the options. For most research code:
+
+- `MIT` — permissive, simple, widely used. Good default for research code.
+- `GPL v3` — requires derivative works to remain open source. Choose this if you want others to share back.
+- `CC BY 4.0` — designed for data and documents, not code.
+
+Consider: do you want others to be able to use your code in commercial software? Do you want derivative works to stay open? Make your choice and note the license name.
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.3 Using the web interface, add a `LICENSE` file containing the relevant license text and commit
+
+1. Open your forked repository on GitHub
+2. Click `Add file` → `Create new file`
+3. Name the file `LICENSE` (no extension)
+4. Go back to [choosealicense.com](https://choosealicense.com), select your chosen license, and copy the full license text
+5. Paste it into the file editor on GitHub
+6. Replace the placeholder text (e.g. `[year]`, `[fullname]`) with the current year and your name
+7. Scroll down → write a commit message (e.g. `Add MIT license`) → click `Commit changes`
+
+::: {.callout-tip}
+### GitHub also has a built-in license picker: when creating the `LICENSE` file, click `Choose a license template` on the right to fill it in automatically.
+:::
+:::
+
+---
+
+### Releases & DOIs
+
+::: {.callout-caution collapse="true"}
+### 4.4 If necessary, change the visibility of your fork to public
+
+1. Go to your forked repository on GitHub
+2. Click `Settings` → scroll to the `Danger Zone` at the bottom
+3. Click `Change repository visibility` → `Make public`
+4. Type the repository name to confirm, then click `I understand, change repository visibility`
+
+Your repository must be public for Zenodo to archive it.
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.5 Link your GitHub account to Zenodo Sandbox and enable tracking of your repository
+
+We'll use [sandbox.zenodo.org](https://sandbox.zenodo.org) — a practice environment with test DOIs that won't persist.
+
+1. Go to [sandbox.zenodo.org](https://sandbox.zenodo.org) and create an account (this is different from your main zenodo.org account)
+2. Once signed in, click your username → `GitHub`
+3. Click `Sync` to refresh the list of your repositories
+4. Find your manuscript repository in the list and toggle it `on`
+
+Zenodo is now watching your repository. The next time you create a GitHub release, it will automatically archive a copy and mint a DOI.
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.6 Create a `v1.0.0` release — then watch Zenodo mint your DOI
+
+1. Go to your forked repository on GitHub
+2. On the right sidebar, click `Releases` → `Create a new release`
+3. Click `Choose a tag` → type `v1.0.0` → click `Create new tag: v1.0.0 on publish`
+4. Set the `Release title` to `v1.0.0`
+5. Add a short description if you like
+6. Click `Publish release`
+
+Now return to [sandbox.zenodo.org](https://sandbox.zenodo.org) — within a few minutes, your repository will appear under `GitHub` with a DOI assigned.
+
+::: {.callout-tip}
+### Use semantic versioning: `v1.0.0` for your first stable release, `v1.0.1` for small fixes, `v1.1.0` for new features added after publication.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.7 Collect the DOI for the repository and add it to the `.qmd` file for the manuscript
+
+1. Return to your Zenodo Sandbox record — find it under your account → `GitHub`
+2. Copy the full DOI (it will look like `10.5072/zenodo.xxxxxxx` — note that `10.5072` is the Sandbox prefix, not a real DOI prefix)
+3. Open the manuscript `.qmd` file in your forked repository
+4. Find the placeholder in the data availability statement and update to the new DOI, e.g.:
+   ```
+   The code for this analysis is available at https://doi.org/10.5072/zenodo.xxxxxxx
+   ```
+6. Commit and push the change with a message like:
+   `Add Zenodo DOI to manuscript front matter`
+
+::: {.callout-tip}
+### In a real submission workflow, you would reserve the DOI on Zenodo *before* finalising the manuscript, so the DOI can be included in the submitted paper. Zenodo lets you reserve a DOI from a draft record without publishing it yet.
+:::
+:::
+
+---
+
+### README badges & citation
+
+::: {.callout-caution collapse="true"}
+### 4.8 Go to your Zenodo record and copy the DOI badge markdown snippet
+
+
+1. Go to your Zenodo Sandbox record (find it under your account → GitHub)
+2. On the right side of the record page, look for the `DOI badge` — click it
+3. Copy the markdown snippet (it looks like `[![DOI](https://sandbox.zenodo.org/badge/...)](...)`)
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.9 Add the badge to the top of your `README.md` — check it renders on GitHub
+
+1. Go to your repository on GitHub
+2. Open your `README.md` using the edit utility and paste the badge at the very top, before the title or first line
+3. Commit and push with a message like: `Add Zenodo DOI badge to README`
+4. Check the `README.md` on the homepage of the repository — the DOI badge should appear as a clickable image at the top
+5. Click it — it should link to your Zenodo Sandbox record!
+
+If the badge shows as broken text, double-check that you pasted the Markdown correctly (it should not be inside a code block).
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.10 Go to cffinit, fill in the details and download the generated `CITATION.cff`
+
+1. Go to [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/)
+2. Fill in:
+   - **Title** — name of the repository / software
+   - **Authors** — your name and ORCID if you have one
+   - **Version** — `1.0.0`
+   - **DOI** — paste your Zenodo Sandbox DOI
+   - **Date released** — today's date
+3. Click `Download` to save the `CITATION.cff` file
+
+::: {.callout-tip}
+### You can find your ORCID at [orcid.org](https://orcid.org). If you don't have one, you can leave the field blank for now.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.11 Add `CITATION.cff` to your repository, commit, and push — check the `Cite this repository` button appears on GitHub
+
+1. Copy `CITATION.cff` into the root of your local repository
+2. Stage, commit, and push with a message like: `Add CITATION.cff for repository citation`
+3. Go to your repository on GitHub — look for the `Cite this repository` button on the right sidebar (under `About`)
+4. Click it to see the auto-generated citation in APA and BibTeX formats
+:::
+
+---
+
+### Data repositories
+
+::: {.callout-caution collapse="true"}
+### 4.12 Identify the raw data that should be shared and the most appropriate repository for it
+
+For the spacewalk manuscript, consider:
+
+- What raw data does the analysis use?
+- Is it already publicly available (e.g. from NASA)? If so, link to it rather than re-depositing.
+- If it needs to be deposited: what type of data is it? (tabular, imaging, sequencing, etc.)
+- What repository is most appropriate?
+
+For general scientific datasets, [Zenodo](https://zenodo.org) or [Figshare](https://figshare.com) are good defaults. For domain-specific data, check [re3data.org](https://www.re3data.org) for a curated list of repositories by discipline.
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.13 Create a draft record for this data in the chosen repository (no need to upload files or make it public)
+
+Using Zenodo Sandbox (or your chosen repository):
+
+1. Go to [sandbox.zenodo.org](https://sandbox.zenodo.org) → `+ New upload`
+2. Select the appropriate `upload type` (e.g. Dataset)
+3. Fill in the metadata:
+   - `Title`
+   - `Authors`
+   - `Description` — what the data is, how it was collected
+   - `License` — `CC BY 4.0` is the standard for research data
+4. Leave it as a `draft` — do not publish
+5. Note the reserved DOI — this can be cited in a manuscript before the record is finalised (and made public)
+
+:::
+
+::: {.callout-caution collapse="true"}
+### 4.14 Think about the data types you generate or work with in your own research. Identify the standard or recommended repository for each data type.
+
+This is a reflection exercise. Think about the data you generate:
+
+- What format is it in? (raw sequencing, mass spec, imaging, tabular, etc.)
+- Is there a discipline-specific repository that mandates or expects this data type?
+- Does your institution or target journal have a preferred repository?
+
+Use [re3data.org](https://www.re3data.org) to search by subject area or data type. Note down your findings — this is useful to have ready before you next submit a paper.
+:::

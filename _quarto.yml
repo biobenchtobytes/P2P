@@ -26,6 +26,12 @@ book:
         - pages/releases-dois.qmd
         - pages/razzle-dazzle.qmd
         - pages/data-repositories.qmd
+    - part: "Exercises"
+      chapters:
+        - pages/E1.qmd
+        - pages/E2.qmd
+        - pages/E3.qmd
+        - pages/E4.qmd
     - part: "Resources"
       chapters:
         - pages/checklist.qmd

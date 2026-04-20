@@ -1,0 +1,280 @@
+---
+title: "Exercises"
+---
+
+Step-by-step guidance for each exercise. The original exercise prompt is shown as the title — click to expand for detailed instructions.
+
+---
+
+## Session 2: Version control
+
+### Local version control
+
+::: {.callout-caution collapse="true"}
+### 2.1 Initialise a `git` repository within the `analysis` folder
+
+::: {.panel-tabset}
+
+#### Python (VSCode)
+
+1. Open the `analysis` folder in VSCode (`File` → `Open Folder`)
+2. Click the `Source Control` icon in the left sidebar (or press `Ctrl+Shift+G`)
+3. Click `Initialise Repository`
+
+Your files will now appear in the Source Control panel with **U** (untracked) badges.
+
+#### R (RStudio)
+
+If you haven't already, open the `analysis` folder as a project (`File` → `New Project` → `Existing Directory`). With this project open:
+
+1. Go to `Tools` → `Project Options` → `Git/SVN`
+2. Change the version control system to `Git` and click OK
+3. Restart RStudio when prompted — the `Git tab` will appear in the top-right panel
+
+#### Terminal
+
+```bash
+cd path/to/analysis
+git init
+git status
+```
+
+`git status` will show all your files as untracked (in red). This is expected.
+
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.2 Create a `.gitignore` — which files should you exclude?
+
+Create a file called `.gitignore` in the root of your `analysis` folder. Files and folders listed here will not be tracked by Git.
+
+At minimum, exclude:
+
+```bash
+# Data files
+data/raw/
+data/processed/
+
+# Results
+results/
+
+# System files
+.DS_Store
+.Rhistory
+__pycache__/
+*.pyc
+
+# IDE files
+.vscode/
+.Rproj.user/
+```
+
+::: {.callout-tip}
+### [gitignore.io](https://www.gitignore.io) generates tailored `.gitignore` files — search for "Python" or "R" to get a solid starting template.
+:::
+
+::: {.callout-tip}
+### Think carefully: should `environment.yml` or `renv.lock` be tracked? Yes — these should be committed, as they are part of making your code reproducible.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.3 Make your first commit with the original folder components
+
+Stage only the files you want to track.
+
+::: {.panel-tabset}
+
+#### Python (VSCode)
+
+1. In the Source Control panel, hover over each file and click `+` to stage it
+2. Stage your script(s), `environment.yml`, `.gitignore`, and any other relevant files
+3. Type a commit message in the box at the top, e.g. `Initial commit: analysis scripts and environment`
+4. Click `Commit` (✓)
+
+#### R (RStudio)
+
+1. In the `Git tab`, tick the checkbox next to the files you want to stage — badge changes from `?` to `A`
+2. Click `Commit`
+3. Write a commit message in the box, e.g. `Initial commit: analysis scripts and environment`
+4. Click `Commit`
+
+#### Terminal
+
+```bash
+git add analysis.py environment.yml .gitignore  # list your files
+git commit -m "Initial commit: analysis scripts and environment"
+```
+
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.4 Write a `README.md` that describes the project, then commit your changes
+
+Create a `README.md` file in the root of your `analysis` folder. It should cover:
+
+- **What** this code does (one paragraph is fine)
+- **Dependencies** — refer to the `environment.yml` or `renv.lock`
+- **How to run it** — what order to run scripts, any inputs needed
+- **Outputs** — what does running the code produce?
+
+A minimal example:
+
+```markdown
+# Spacewalk Analysis
+
+Analysis of NASA EVA (spacewalk) data, exploring duration trends and crew patterns.
+
+## Dependencies
+
+See `environment.yml` (Python) or `renv.lock` (R) for full environment details.
+
+## How to run
+
+1. Set up the environment from `environment.yml` / `renv.lock`
+2. Run `spacewalk_analysis.py` / `spacewalk_analysis.R`
+
+## Outputs
+
+Figures are saved to `results/`.
+```
+
+Once written, stage and commit your `README.md`: `Added README with project description and run instructions`
+
+:::
+
+---
+
+### Remote version control
+
+::: {.callout-caution collapse="true"}
+### 2.5 Publish your local `spacewalk_analysis` repository to GitHub
+
+::: {.panel-tabset}
+
+#### Python (VSCode)
+
+1. Open the `Source Control` tab (`Ctrl+Shift+G`)
+2. Click `Publish Branch` (appears after your first commit)
+3. Sign in to GitHub if prompted
+4. Choose `Public` or `Private`
+5. VSCode creates the repository on GitHub and pushes your commits automatically
+
+#### R (RStudio)
+
+In the console:
+
+```r
+usethis::use_github()
+```
+
+Follow the prompts to choose visibility and confirm. RStudio will open your new repository in a browser.
+
+#### GitHub Desktop
+
+1. Open GitHub Desktop and sign in to your GitHub account
+2. Click `File` → `Add Local Repository`
+3. Browse to your `analysis` folder and click `Add Repository`
+4. Click `Publish repository` in the top bar
+5. Choose `Public` or `Private`, then click `Publish Repository`
+
+
+
+:::
+
+::: {.callout-important}
+### If GitHub asks you to authenticate, follow the prompts to sign in via browser or set up a personal access token (PAT). RStudio users can run `usethis::create_github_token()` to generate one.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.6 Visualise the repository on GitHub — explore the commit history, README, and file structure
+
+Open your repository on GitHub and explore:
+
+- **Code tab** — your file structure, with `README.md` rendered below
+- **Commits** — click the clock icon (or "X commits") to see your full commit history
+- **Each commit** — click any commit to see exactly what changed (green = added, red = removed)
+
+Check that:
+
+- Your `README.md` renders correctly
+- Your `.gitignore` is present (and working — data/results folders should not appear)
+- Your environment file (`environment.yml` or `renv.lock`) is there
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.7 Update one of the files in the repository on your local machine, then push the change to GitHub
+
+Make a small change to your `README.md` or analysis script (e.g. add a comment or update a description), then push it.
+
+::: {.panel-tabset}
+
+#### Python (VSCode)
+
+1. Save your changes
+2. Go to the `Source Control` tab — the changed file will appear with an `M` (modified) badge
+3. Stage the file (`+`), write a commit message, and click `Commit`
+4. Click `Sync Changes` (↑↓) to push to GitHub
+
+#### R (RStudio)
+
+1. Save your changes
+2. In the `Git tab`, tick the checkbox next to the modified file
+3. Click `Commit`, write a message, and click `Commit`
+4. Click the `Push` button (↑)
+
+:::
+
+Refresh your GitHub page to confirm the change appears in the commit history.
+:::
+
+---
+
+### Creating & cloning
+
+::: {.callout-caution collapse="true"}
+### 2.8 Create a new repository on GitHub named `your-username`
+
+1. Go to [github.com](https://github.com) and sign in
+2. Click the `+` in the top-right → `New repository`
+3. Set the repository name to **exactly your GitHub username** (e.g. if your username is `comfyclouds`, the repo is named `comfyclouds`)
+4. Set visibility to `Public`
+5. Tick `Add a README file`
+6. Click `Create repository`
+
+::: {.callout-tip}
+### GitHub treats a repository with the same name as your username as your profile README — it renders automatically on your GitHub homepage.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.9 Clone the repository to your computer, then open in your preferred IDE
+
+1. Go to your new repository on GitHub
+2. Click the green `Code` button → click the `Open with GitHub Desktop` button (or copy the URL for manual cloning)
+3. If using GitHub Desktop, follow the prompts to choose a local folder and clone the repository
+4. Open the cloned folder in your IDE (VSCode or RStudio)
+
+:::
+
+::: {.callout-caution collapse="true"}
+### 2.10–2.12 Browse for inspiration, write your `README.md`, and push to GitHub
+
+Browse [awesome-readme](https://github.com/matiassingers/awesome-readme) for inspiration — look for profiles (not project READMEs) that match your style.
+
+Edit the `README.md` in your cloned username repository. Ideas to include:
+
+- A short bio (who you are, what you work on)
+- Your research interests or current projects
+- Links to your lab website, ORCID, or publications
+- Tools or languages you use
+
+Commit as you go — don't wait until the end.
+
+Push your finished README to GitHub
+
+Visit your GitHub profile page (`github.com/your-username`) to see it live.
+:::

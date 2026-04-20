@@ -1,0 +1,223 @@
+---
+title: "Exercises"
+---
+
+Step-by-step guidance for each exercise. The original exercise prompt is shown as the title — click to expand for detailed instructions.
+
+---
+
+## Session 3: Collaboration
+
+### Getting started
+
+::: {.callout-caution collapse="true"}
+### 3.1 Accept your invitation to collaborate on the shared manuscript repository
+
+Check your email for an invitation from GitHub, or:
+
+1. Go to [github.com/notifications](https://github.com/notifications)
+2. Find the repository invitation and click **Accept**
+
+You should now see the shared manuscript repository in your list of repositories.
+
+
+::: {.callout-note}
+
+### You can add repositories to stared lists on GitHub to keep track of them more easily. This is especially useful for repositories you didn't create!
+
+:::
+
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.2 Clone the manuscript repository to your machine and open it in your IDE
+
+1. Go to the manuscript repository on GitHub
+2. Click the green **Code** button → click `Open with GitHub Desktop` (or copy the URL and clone via terminal)
+3. Follow the prompts to choose a local folder and clone the repository
+4. Open the cloned folder in your IDE (VSCode or RStudio)
+
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.3 Explore the structure — how does it differ from the bare-bones analysis folder from yesterday?
+
+Have a look at the folder structure. Things to look for compared to yesterday's `analysis` folder:
+
+- Is there a more detailed `README.md`?
+- Are there separate folders for scripts, data, results, and manuscript files?
+- Is there an environment file?
+- Are there any code smells — hardcoded paths, commented-out code, missing documentation?
+
+
+::: {.callout-important}
+### You don't need to fix anything yet — just get familiar with the repository.
+:::
+
+:::
+
+---
+
+### Issues
+
+::: {.callout-caution collapse="true"}
+### 3.4 Using the provided `ISSUES.md`, create at least one GitHub issue in the manuscript repository — include a label, title and description
+
+1. Open the manuscript repository on GitHub
+2. Click the `Issues` tab → `New issue`
+3. Give it a short, specific `title` (copied from `ISSUES.md` or your own)
+4. In the `description`, explain:
+   - What the problem is
+   - Where it is (file name + line number if possible)
+   - What the expected behaviour should be
+5. On the right sidebar, click `Labels` and select an appropriate one (e.g. `bug`, `enhancement`)
+6. Click `Submit new issue`
+
+::: {.callout-tip}
+### Be specific. "Fix the script" is not useful. "*Line 12 of `analysis.py` uses an absolute path — replace with a relative path*" is.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.5 Review the repository yourself — can you spot anything else?
+
+Work through the pre-publication checklist from the slides:
+
+- ❓ Does the repo structure make sense?
+- ❓ Is there a clear README?
+- ❓ Are there hardcoded paths, dead code, unused imports, or missing docstrings?
+- ❓ Is there an up-to-date environment file?
+- ❓ Is raw data or are credentials committed to the repo?
+- ❓ Does the manuscript render correctly on GitHub or Quarto Pub?
+- ❓ Are there any broken links or missing files?
+- ❓ Are there typos?
+
+Make notes on anything that looks off — you'll log these as issues in the next step.
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.6 Record one additional code smell as a new issue
+
+Using what you found in 3.5, create a second GitHub issue. Follow the same format as 3.4:
+
+- Specific title
+- Clear description of the problem and where it is
+- Appropriate label
+
+Try to pick something different from your first issue — variety helps the group fix more of the repository.
+:::
+
+---
+
+### Branches
+
+::: {.callout-caution collapse="true"}
+### 3.7 On GitHub, assign yourself to one of the open issues
+
+1. Go to the `Issues` tab in the manuscript repository
+2. Click on an open issue that hasn't been assigned yet
+3. On the right sidebar, click `Assignees` → select yourself
+4. This signals to the rest of the team that you're working on it
+
+::: {.callout-tip}
+### Pick an issue that matches your skills — if you're more comfortable with Python, take a Python-related issue, and vice versa.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.8 In your IDE, create a new branch for your fix — name it `fix/<issue-number>-short-description`
+
+::: {.panel-tabset}
+
+#### Python (VSCode)
+
+1. Look at the bottom-left status bar — it shows the current branch (likely `main`)
+2. Click it → `Create new branch`
+3. Name it `fix/<issue-number>-short-description`, e.g. `fix/3-hardcoded-path`
+4. Press Enter — you're now on the new branch
+
+#### R (RStudio)
+
+1. On GitHub, click the `Code` tab → click the branch dropdown (it says `main`)
+2. Click `New branch`
+3. Name it `fix/<issue-number>-short-description`, e.g. `fix/3-hardcoded-path`
+4. Click `Create`
+5. In RStudio, click the `Git` tab → click the branch dropdown → select your new branch to switch to it
+6. You should now see your branch name in the Git tab and the bottom-right status bar
+
+:::
+
+::: {.callout-tip}
+### The issue number in the branch name makes it easy to trace changes back to their motivation. `fix/3-hardcoded-path` is immediately clear; `my-changes` is not.
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.9 Make your changes, commit with a clear message, and push the branch to GitHub
+
+::: {.panel-tabset}
+
+#### Python (VSCode)
+1. In your IDE, make the fix for your assigned issue
+2. Stage the changed file(s) and commit with a message that references the issue, e.g.:
+   `Fix hardcoded path in analysis.py — closes #3`
+3. Push the branch to GitHub in the `Source Control` tab → `Publish Branch`
+
+#### R (RStudio)
+
+1. In your IDE, make the fix for your assigned issue
+2. Stage the changed file(s) and commit with a message that references the issue, e.g.:
+   `Fix hardcoded path in analysis.py — closes #3`
+3. Push the branch to GitHub in the `Git` tab → click `Push` (↑)
+:::
+
+Check GitHub to confirm your branch appears in the repository (look under the `branches` dropdown on the Code tab).
+:::
+
+---
+
+### Pull requests
+
+::: {.callout-caution collapse="true"}
+### 3.10 Via GitHub, open a pull request for your branch — link it to the issue and assign a teammate as reviewer
+
+1. Go to the repository on GitHub — you should see a yellow banner saying `"Compare & pull request"` for your branch. Click it.
+   - If the banner has disappeared, go to the `Pull requests` tab → `New pull request` → select your branch
+2. Write a clear `title` (e.g. `Fix hardcoded path in analysis.py`)
+3. In the `description`, type "*Closes #3*" (using your actual issue number) — this automatically links the PR to the issue and will close it when merged
+4. On the right sidebar, click `Reviewers` → select a teammate
+5. Click `Create pull request`
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.11 Review a teammate's PR — read the diff carefully, leave at least one comment, then approve
+
+1. Go to the `Pull requests` tab
+2. Open the PR you've been assigned to review
+3. Click `Files changed` to see the diff
+   - Green lines = additions
+   - Red lines = deletions
+4. Click the `+` icon next to any line to leave an inline comment
+5. When you've reviewed everything, click `Review changes` (top right):
+   - ✅ `Approve` — looks good, ready to merge
+   - 💬 `Comment` — feedback, but no verdict yet
+   - ❌ `Request changes` — something needs fixing first
+6. Submit your review
+
+::: {.callout-tip}
+### You're reviewing the *code*, not the person. Be specific and constructive: "This path will break on Windows — consider using `os.path.join()` instead" is much more useful than "path is wrong".
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+### 3.12 Once your own PR is approved, merge it — then watch the manuscript update live!
+
+1. Go to your PR on GitHub
+2. Once a reviewer has approved it, the `Merge pull request` button will be active
+3. Click `Merge pull request` → `Confirm merge`
+4. Optionally, click `Delete branch` to keep the repository tidy
+5. The issue linked with `Closes #` will automatically close
+
+Watch the repository — the manuscript is set up with to re-render once your fix is applied.
+:::

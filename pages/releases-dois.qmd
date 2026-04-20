@@ -67,4 +67,6 @@ DOIs are generated via a process called **minting** — a release becomes a perm
 
 4.6 Create a `v1.0.0` release — then watch Zenodo mint your DOI
 
+4.7 Collect the DOI for the repository and add it to the `.qmd` file for the manuscript
+
 :::
