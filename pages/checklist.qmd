@@ -1,0 +1,191 @@
+---
+title: "Publishing Checklist"
+---
+
+```{=html}
+<style>
+  .checklist-wrap { padding: 1.5rem 0; max-width: 680px; }
+  .section-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 1rem; }
+  .main-item { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 8px; overflow: hidden; background: var(--color-background-primary); }
+  .main-row { display: flex; align-items: flex-start; gap: 12px; padding: 0.85rem 1rem; }
+  .main-item.all-done .main-row { background: var(--color-background-success); }
+  .cb { width: 18px; height: 18px; min-width: 18px; border-radius: 4px; border: 1.5px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0; }
+  .cb svg { display: none; }
+  .cb.done { background: var(--color-background-success); border-color: var(--color-border-success); }
+  .cb.done svg { display: block; }
+  .main-text { flex: 1; }
+  .main-label { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 2px; }
+  .main-item.all-done .main-label { color: var(--color-text-success); }
+  .main-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; margin: 0; }
+  .main-item.all-done .main-desc { color: var(--color-text-success); opacity: 0.75; }
+  .sub-list { border-top: 0.5px solid var(--color-border-tertiary); padding: 0.5rem 1rem 0.75rem 2.75rem; display: flex; flex-direction: column; gap: 2px; }
+  .sub-item { display: flex; align-items: flex-start; gap: 10px; padding: 5px 6px; border-radius: 6px; cursor: pointer; }
+  .sub-item:hover { background: var(--color-background-secondary, #f5f5f5); }
+  .sub-cb { width: 15px; height: 15px; min-width: 15px; border-radius: 3px; border: 1.5px solid var(--color-border-secondary, #ccc); display: flex; align-items: center; justify-content: center; margin-top: 1px; flex-shrink: 0; }
+  .sub-cb svg { display: none; }
+  .sub-cb.done { background: var(--color-background-success, #e6f4ea); border-color: var(--color-border-success, #4caf50); }
+  .sub-cb.done svg { display: block; }
+  .sub-label { font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
+  .sub-item.checked .sub-label { color: var(--color-text-secondary); text-decoration: line-through; text-decoration-color: var(--color-border-secondary, #ccc); }
+  .sub-label code { font-family: monospace; font-size: 11.5px; background: var(--color-background-tertiary, #f0f0f0); padding: 1px 5px; border-radius: 3px; }
+  .progress-bar-wrap { margin-bottom: 1.25rem; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--color-text-secondary); margin-bottom: 5px; }
+  .progress-track { height: 4px; background: var(--color-background-tertiary, #eee); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #4caf50; border-radius: 2px; transition: width 0.3s ease; }
+  .done-msg { display: none; font-size: 14px; color: var(--color-text-success, #2e7d32); margin-top: 1rem; padding: 0.75rem 1rem; background: var(--color-background-success, #e6f4ea); border-radius: 8px; }
+  .reset-btn { margin-top: 1rem; font-size: 13px; color: var(--color-text-secondary); background: none; border: 0.5px solid var(--color-border-tertiary, #ddd); border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+  .reset-btn:hover { background: var(--color-background-secondary, #f5f5f5); }
+</style>
+
+<div class="checklist-wrap">
+  <p class="section-title">From plotting to publishable</p>
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>Progress</span><span id="p2p-prog-label">0 / 22</span></div>
+    <div class="progress-track"><div class="progress-fill" id="p2p-prog-fill" style="width:0%"></div></div>
+  </div>
+  <div id="p2p-checklist"></div>
+  <div class="done-msg" id="p2p-done-msg">Everything ticked — ready to publish!</div>
+  <button class="reset-btn" onclick="p2pReset()">Reset</button>
+</div>
+
+<script>
+(function() {
+  const ITEMS = [
+    {
+      label: "Structure",
+      desc: "Does the repo follow a logical layout?",
+      subs: [
+        "Data, scripts, results, and docs are in clearly named separate folders",
+        "No unrelated files mixed together (e.g. data files alongside scripts)",
+        "A clear entry point exists — it's obvious where to start",
+        "Nested folders have a documented purpose or workflow"
+      ]
+    },
+    {
+      label: "README & documentation",
+      desc: "Could a stranger run this independently?",
+      subs: [
+        "README explains what the project does and why",
+        "Dependencies and how to install them are listed",
+        "Step-by-step instructions for running the code are included",
+        "Inputs and expected outputs are described",
+        "The role of each script or folder is explained"
+      ]
+    },
+    {
+      label: "Clean code",
+      desc: "Free from common code smells?",
+      subs: [
+        "No hardcoded absolute file paths (e.g. <code>/Users/dezrae/Desktop/data.csv</code>)",
+        "No dead code — commented-out blocks or functions that are never called",
+        "No unused imports or packages",
+        "No leftover debug print statements or TODOs",
+        "Consistent, descriptive variable and function names",
+        "Consistent indentation and formatting throughout",
+        "Functions have docstrings or inline comments explaining their purpose"
+      ]
+    },
+    {
+      label: "Environment file",
+      desc: "Is the software context fully captured?",
+      subs: [
+        "An <code>environment.yml</code> (Conda) or <code>renv.lock</code> (R) is present in the root",
+        "The file reflects the current state of the environment",
+        "Language version (Python/R) is specified",
+        "All required packages and their versions are pinned"
+      ]
+    },
+    {
+      label: "No raw data, results, or credentials",
+      desc: "Are the right files excluded from version control?",
+      subs: [
+        "A <code>.gitignore</code> is present and covers data files, results, and system files",
+        "No raw data files are committed to the repository",
+        "No credentials, API keys, or tokens are anywhere in the repo history",
+        "Results that can be regenerated from code are not committed",
+        "Raw data is archived in a dedicated data repository with its own DOI"
+      ]
+    },
+    {
+      label: "Licence",
+      desc: "Is the code legally usable by others?",
+      subs: [
+        "A <code>LICENSE</code> file is present in the root of the repository",
+        "The licence is appropriate for the intended use (e.g. MIT for permissive, GPL for copyleft)",
+        "Data and documentation have their own licence if needed (e.g. CC BY 4.0)"
+      ]
+    },
+    {
+      label: "Citable snapshots",
+      desc: "Can this code be cited in a paper?",
+      subs: [
+        "A GitHub release has been created with semantic versioning (e.g. <code>v1.0.0</code>)",
+        "The repository is linked to Zenodo (or equivalent) for DOI minting",
+        "A DOI badge is added to the README",
+        "A <code>CITATION.cff</code> file is present so GitHub renders a 'Cite this repository' button"
+      ]
+    }
+  ];
+
+  const TOTAL = ITEMS.reduce((acc, i) => acc + i.subs.length, 0);
+  let state = ITEMS.map(i => i.subs.map(() => false));
+
+  function svg(size) {
+    return `<svg width="${size}" height="${Math.round(size*0.82)}" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,7.5 10,1" stroke="#2e7d32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+
+  function render() {
+    const container = document.getElementById('p2p-checklist');
+    container.innerHTML = '';
+    ITEMS.forEach((item, i) => {
+      const allDone = state[i].every(Boolean);
+      const doneSubs = state[i].filter(Boolean).length;
+      const div = document.createElement('div');
+      div.className = 'main-item' + (allDone ? ' all-done' : '');
+      div.innerHTML = `
+        <div class="main-row">
+          <div class="cb${allDone ? ' done' : ''}">${svg(11)}</div>
+          <div class="main-text">
+            <p class="main-label">${item.label} <span style="font-size:12px;font-weight:400;color:var(--color-text-tertiary,#999);margin-left:4px;">${doneSubs}/${item.subs.length}</span></p>
+            <p class="main-desc">${item.desc}</p>
+          </div>
+        </div>
+        <div class="sub-list">
+          ${item.subs.map((s, j) => `
+            <div class="sub-item${state[i][j] ? ' checked' : ''}" data-i="${i}" data-j="${j}">
+              <div class="sub-cb${state[i][j] ? ' done' : ''}">${svg(9)}</div>
+              <span class="sub-label">${s}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    document.querySelectorAll('#p2p-checklist .sub-item').forEach(el => {
+      el.addEventListener('click', function() {
+        state[parseInt(this.dataset.i)][parseInt(this.dataset.j)] ^= true;
+        updateProgress();
+        render();
+      });
+    });
+  }
+
+  function updateProgress() {
+    const done = state.flat().filter(Boolean).length;
+    document.getElementById('p2p-prog-label').textContent = done + ' / ' + TOTAL;
+    document.getElementById('p2p-prog-fill').style.width = Math.round((done / TOTAL) * 100) + '%';
+    document.getElementById('p2p-done-msg').style.display = done === TOTAL ? 'block' : 'none';
+  }
+
+  window.p2pReset = function() {
+    state = ITEMS.map(i => i.subs.map(() => false));
+    updateProgress();
+    render();
+  };
+
+  render();
+  updateProgress();
+})();
+</script>
+```

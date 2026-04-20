@@ -1,24 +1,24 @@
 ---
-title: "Resources"
+title: "Tools & Templates"
 ---
 
-
-## Tools & platforms
+## Tools
 
 - [re3data.org](https://www.re3data.org) — registry of 2,000+ research data repositories, searchable by subject and data type
 - [choosealicense.com](https://choosealicense.com) — plain-English guide to choosing an open source licence
 - [gitignore.io](https://www.gitignore.io) — generate `.gitignore` templates for any language or IDE
 - [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/) — browser-based `CITATION.cff` generator
 - [shields.io](https://shields.io) — generate badges for licences, DOIs, build status, and more
-- [Quarto Manuscripts](https://quarto.org/docs/manuscripts/) — publish code and data integrated into manuscripts
 - [Code Ocean](https://codeocean.com) — platform for executable, citable code capsules
+- [Zenodo](https://zenodo.org) — archive code and data with DOI minting
+- [Quarto Manuscripts](https://quarto.org/docs/manuscripts/) — publish code and data integrated into manuscripts
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) — automate reproducible analysis workflows
+- [GitHub Pull Requests Plugin](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) — manage GitHub PRs from VS Code
+
+## Templates
+
 - [GitHub templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) — create standardised repo structures for new projects
-
-## Reading & learning
-
-- [FAIR principles](https://www.go-fair.org/fair-principles/) — Findable, Accessible, Interoperable, Reusable — the framework underpinning open science
-- [The Turing Way](https://book.the-turing-way.org/) — comprehensive, community-built handbook for reproducible research
-- [Software Carpentry: Better Research Software](https://carpentries-incubator.github.io/better-research-software/) — hands-on workshop for research computing
-- [Data Carpentry: Data Management](https://datacarpentry.org/data-management/) — workshop on managing and sharing research data
-- [ReproducibiliTea](https://www.reproducibilitea.org/) — journal club and community for open and reproducible research
+- [Experiment Template](https://github.com/dezeraecox-experiments/experiment)
+- [Analysis Template](https://github.com/dezeraecox-experiments/analysis)
+- [Manuscript Writing Template](https://github.com/dezeraecox-manuscripts/manuscript_writing)
+- [Public Manuscript Template](https://github.com/dezeraecox-manuscripts/manuscript_public)

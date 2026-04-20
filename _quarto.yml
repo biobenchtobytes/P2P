@@ -26,7 +26,11 @@ book:
         - pages/releases-dois.qmd
         - pages/razzle-dazzle.qmd
         - pages/data-repositories.qmd
-    - pages/resources.qmd
+    - part: "Resources"
+      chapters:
+        - pages/checklist.qmd
+        - pages/resources.qmd
+        - pages/learning.qmd
   sidebar:
     search: true
     logo: pages/images/logo_transparent.png

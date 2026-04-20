@@ -1,0 +1,9 @@
+---
+title: "Further Learning"
+---
+
+- [FAIR principles](https://www.go-fair.org/fair-principles/) — Findable, Accessible, Interoperable, Reusable — the framework underpinning open science
+- [The Turing Way](https://book.the-turing-way.org/) — comprehensive, community-built handbook for reproducible research
+- [Software Carpentry: Better Research Software](https://carpentries-incubator.github.io/better-research-software/) — hands-on workshop for research computing
+- [Data Carpentry: Data Management](https://datacarpentry.org/data-management/) — workshop on managing and sharing research data
+- [ReproducibiliTea](https://www.reproducibilitea.org/) — journal club and community for open and reproducible research
