@@ -36,7 +36,6 @@ You should now see the shared manuscript repository in your list of repositories
 4. Open the cloned folder in your IDE (VSCode or RStudio)
 
 :::
-:::
 
 ::: {.callout-caution collapse="true"}
 ### 3.3 Explore the structure — how does it differ from the bare-bones analysis folder from yesterday?
@@ -49,9 +48,9 @@ Have a look at the folder structure. Things to look for compared to yesterday's 
 - Are there any code smells — hardcoded paths, commented-out code, missing documentation?
 
 
-::: {.callout-important}
+:::: {.callout-important}
 ### You don't need to fix anything yet — just get familiar with the repository.
-:::
+::::
 
 :::
 
